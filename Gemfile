@@ -39,6 +39,12 @@ group :development, :test do
 end
 
 group :test do
+  # the below gems are necessary to use capybara with react
+  gem 'phantomjs'
+  gem 'poltergeist'
+  # this is used to ensure a clean state during tests
+  gem 'database_cleaner'
+  # this provides the methods used for feature testing
   gem 'capybara', '~> 3.3'
 end
 
