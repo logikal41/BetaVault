@@ -1,9 +1,14 @@
 require "rails_helper"
 
 RSpec.feature "Signup users", js: true do
-    scenario "with valid credentials" do
+
+    before do
         visit "http://localhost:3000"
-        page.find(:xpath, "//a[@href='/register']").click
+    end
+
+    scenario "with valid credentials" do
+        page.find('#menu').find_link(’Register’).click
+        # page.locate(:xpath, "//a[@href=’/register’]").click
         fill_in "Email", with: "user@example.com"
         fill_in "Password", with: "password"
         fill_in "Password confirmation", with: "password"
@@ -13,8 +18,7 @@ RSpec.feature "Signup users", js: true do
     end
 
     scenario "with invalid credentials" do
-        visit "http://localhost:3000"
-        click_link "Register"
+        click_on "Register"
         fill_in "Email", with: ""
         fill_in "Password", with: ""
         fill_in "Password confirmation", with: ""
