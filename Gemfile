@@ -36,12 +36,12 @@ group :development, :test do
   gem 'pry'
   # gem 'letter_opener'
   gem 'rspec-rails', '~> 3.7'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
 group :test do
-  # the below gems are necessary to use capybara with react
-  gem 'phantomjs'
-  gem 'poltergeist'
+  # This capybara driver is used to run javascript functions through headless browswer
+  gem 'selenium-webdriver'
   # this is used to ensure a clean state during tests
   gem 'database_cleaner'
   # this provides the methods used for feature testing
