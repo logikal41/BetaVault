@@ -28,7 +28,9 @@ gem 'puma', '~> 3.7'
 # This will be used to invite users to the website
 # gem 'devise_invitable', '~> 1.7.0'
 
-gem 'omniauth'
+# this is for authenticating with facebook, google, etc.
+gem 'omniauth' 
+
 gem 'devise', '~> 4.4.3'
 gem 'devise_token_auth', '~> 0.1.43'
 
@@ -55,7 +57,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard', '~>2.14.0'
   gem 'guard-rspec', '~>4.7.2'
-  gem 'guard-cucumber', '~>2.1.2'
+  gem 'guard-cucumber', '~>2.1.2' # get rid of this if you dont use it
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
