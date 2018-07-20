@@ -1,0 +1,149 @@
+.form-error {
+    color: red;
+}
+
+.field {
+    
+    margin-bottom: 0 !important;
+}
+
+.list-container{
+
+    margin:2em;
+    padding: 2em;
+    background-color: #FFFFFF;
+
+
+}
+
+.list-button-creation{
+
+    margin-top: 1em !important;
+    background: #25D6A0 !important;    
+    color: white !important;
+    border-radius: 0em !important;
+    
+    font-family: Roboto, 'Helvetica Neue', sans-serif !important;
+    font-size: .95em !important;
+    font-weight: 100 !important;
+
+
+}
+
+.list-header{
+
+    margin-top: 2em;
+    font-family: Roboto, 'Helvetica Neue', sans-serif !important;
+    font-size: .95em !important;
+ 
+ }
+
+ .guide-list {
+
+    color: black;
+    font-family: Roboto, 'Helvetica Neue', sans-serif !important;
+    font-size: .95em !important;
+    font-weight: 100 !important;
+
+}
+
+.route-list {
+    cursor: pointer;
+}
+
+.route-list:hover {
+    color: blue;
+}
+
+.details-container{
+
+    margin-top: 2em;
+    background-color: #f4f4f4;
+
+}
+
+.details-header{
+
+    font-family: Roboto, 'Helvetica Neue', sans-serif !important;
+    font-size: 2.5em !important;
+
+}
+
+.navigation-buttons{
+
+    margin-top: 1em !important;
+    margin-bottom: 2em !important;
+    border-radius: 0em !important;
+    color:grey !important;
+    background: black !important;
+
+}
+
+.description-header{
+
+    font-family: Roboto, 'Helvetica Neue', sans-serif !important;
+    font-size: .95em !important;
+
+}
+
+.description-body{
+  
+    font-family: Roboto, 'Helvetica Neue', sans-serif !important;
+    font-size: .95em !important;
+    font-weight: 100 !important;
+
+}
+
+.comments-container{
+   
+    margin:2em;
+    padding: 2em;
+    background-color: #FFFFFF;
+
+}
+
+.comments-header{
+
+    margin: calc(1rem - .14285714em) 0 1rem !important;
+    font-family: Roboto, 'Helvetica Neue', sans-serif !important;
+    font-size: .95em !important;
+
+}
+
+.background-container{
+
+    background-color: blue;
+
+}
+
+.black-container{
+
+    background-color: black;
+    padding: 1em;
+    margin: 2em;
+
+}
+
+.nav-text-color{
+
+    color: #B7BABD;
+
+}
+
+.nav-text-color-selected{
+
+    color: white;
+
+}
+
+.make-form-container{
+
+    margin:2em;
+    padding: 2em 2em 5em 2em;
+    background-color: #FFFFFF;
+
+}
+
+.field-styling {
+    margin-bottom: 2em;
+}
