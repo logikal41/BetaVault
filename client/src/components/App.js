@@ -9,6 +9,7 @@ import Home from './Home';
 import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
+import VaultGuide from './Vault/Guide';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <AuthRoute exact path='/login' component={Login} />
             <AuthRoute exact path='/register' component={Register} />
+            <AuthRoute exact path='/vault/:id' component={VaultGuide} />
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>
