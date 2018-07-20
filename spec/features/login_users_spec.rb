@@ -1,7 +1,8 @@
 require 'rails_helper'
 
-feature "Users signin", js: true do
+feature "Users login", js: true do
         before do
+                # Must first create a user
                 visit "http://localhost:3000"
                 click_link "Register"
                 fill_in "Email", with: "user@example.com"
@@ -10,8 +11,10 @@ feature "Users signin", js: true do
                 click_button "Submit"
                 
                 expect(page).to have_current_path("/")
+                # This next expectation may need to become more specific since
+                # it is just searching the entire DOM for the text "Logout"
                 page.find(:xpath, "//a[text()='Logout']").click
-                expect(page).to have_content("Logged out successfully!") 
+                expect(page).to have_content("Logged out successfully!")
         end
 
         scenario "with valid credentials" do  
@@ -21,6 +24,8 @@ feature "Users signin", js: true do
                 click_button "Submit"
 
                 expect(page).to have_current_path("/")
+                expect(page).not_to have_content("Login")
+                expect(page).not_to have_content("Register")
                 expect(page).to have_content("Logout")
         end
 
@@ -31,6 +36,7 @@ feature "Users signin", js: true do
                 click_button "Submit"
 
                 expect(page).to have_content("Invalid login credentials. Please try again.")
+                expect(page).to have_content("Login")
                 expect(page).not_to have_content("Logout")
                 expect(page).to have_current_path("/login")
         end

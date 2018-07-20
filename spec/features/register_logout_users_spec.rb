@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Signup users", js: true do
+feature "Register and Logout users", js: true do
 
     scenario "with valid credentials" do
         visit "http://localhost:3000"
@@ -11,6 +11,9 @@ feature "Signup users", js: true do
         click_button "Submit"
         
         expect(page).to have_current_path("/")
+        expect(page).not_to have_content('Login')
+        # This next expectation may need to become more specific since
+        # it is just searching the entire DOM for the text "Logout"
         page.find(:xpath, "//a[text()='Logout']").click
         expect(page).to have_content("Logged out successfully!")
     
