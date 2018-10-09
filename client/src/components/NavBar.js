@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Image } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleLogout } from '../actions/auth';
+import BetaVaultLogo from '../images/BetaVault_Word.png';
 
 class NavBar extends Component {
   rightNavs = () => {
@@ -34,6 +35,7 @@ class NavBar extends Component {
     return (
       <div>
         <Menu pointing secondary>
+        {/* <Image src={BetaVaultLogo} inline="true" size="mini" /> */}
           <Link to='/'>
             <Menu.Item name='home' />
           </Link>

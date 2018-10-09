@@ -13,7 +13,6 @@
     padding: 2em;
     background-color: #FFFFFF;
 
-
 }
 
 .list-button-creation{
@@ -146,4 +145,12 @@
 
 .field-styling {
     margin-bottom: 2em;
+}
+
+input {
+    text-align: center;
+}
+
+.home-buttons {
+    margin-top: 10px;
 }
