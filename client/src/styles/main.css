@@ -148,9 +148,19 @@
 }
 
 input {
-    text-align: center;
+    text-align: center !important;
 }
 
-.home-buttons {
-    margin-top: 10px;
+.home-container {
+    margin-top: 5%;
+}
+
+.home-button {
+    margin-top: 5px !important;
+}
+
+.home-form {
+    width: 40%;
+    text-align: center;
+    margin: 0 auto 0 auto;
 }

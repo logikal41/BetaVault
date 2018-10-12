@@ -1,74 +1,82 @@
-import React, { Component } from 'react';
-import { Header, Segment, Form, Button, Image, Grid } from 'semantic-ui-react';
+import React from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { Form, Header, Container, Button, Image, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
 import { handleLogin } from '../actions/auth';
 import BetaVaultBox from '../images/BetaVault_Box.png';
 
-class Home extends Component {
-  state = { email: '', password: '' };
+class Home extends React.Component {
 
-  handleChange = event => {
-    const { id, value } = event.target;
-    this.setState({ [id]: value });
-  }
+    renderField = (field) => {
+        return (
+            <Container>
+                <label>{field.label}</label>
+                <Form.Input
+                    type={field.type}
+                    placeholder={field.placeholder} 
+                    {...field.input}
+                />
+                <div className="form-error"> { field.meta.touched ? field.meta.error : '' } </div>
+            </Container>
+        );
+    }
 
-  handleSubmit = event => {
-    event.preventDefault();
-    const { dispatch, history } = this.props;
-    const { email, password } = this.state;
-    dispatch(handleLogin(email, password, history));
-  }
+    onSubmit = ({email, password}) => {
+      const { dispatch, history } = this.props;
+      dispatch(handleLogin(email, password, history));
+    }
 
-  render() {
-    const { email, password } = this.state;
-    const { history } = this.props;
+    render() {
+        const { handleSubmit, history } = this.props;
 
-    return (
-      <Grid centered="true">
-        <Grid.Row>
-          <Segment basic>
-            <Image src={BetaVaultBox} centered="true" size="small"/>
-            <Header as='h1' textAlign='center'>Welcome to The Beta Vault!</Header>
-          </Segment>
-        </Grid.Row>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Field>
-            <label htmlFor='email'>Email</label>
-            <input
-              required
-              id='email'
-              value={email}
-              placeholder='Email'
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label htmlFor='password'>Password</label>
-            <input
-              required
-              id='password'
-              value={password}
-              placeholder='Password'
-              type='password'
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          <Grid.Row className="home-buttons">
-            <Button primary type='submit'>Submit</Button>
-          </Grid.Row>
-          <Grid.Row className="home-buttons">
-            <Button secondary onClick={() => history.push("/register")}>Register</Button>
-          </Grid.Row>
-        </Form>
-      </Grid>
-    );
-  }
+        return (
+            <Container className='home-container'>
+                <Segment basic>
+                    <Image src={BetaVaultBox} centered="true" size="small"/>
+                </Segment>
+                <Container textAlign='center' lassName='make-form-container'>
+                    <Header className='details-header' textAlign='center'>Welcome to the Beta Vault!</Header>
+                    <div className='home-form'>
+                        <Form onSubmit={ handleSubmit(this.onSubmit) }>
+                            <Field
+                                label='Email'
+                                name='email'
+                                component={this.renderField}
+                                placeholder='user@gmail.com'
+                                type='text'
+                            />
+                            <Field
+                                label='Password'
+                                name='password'
+                                component={this.renderField}
+                                placeholder='password'
+                                type='password'
+                            />
+                            <Button fluid='true' color='green' className='home-button'>Login</Button>
+                            <Button fluid='true' type="button" color='black' className='home-button' basic={true} onClick={() => history.push('/register')}>Register</Button>
+                        </Form>
+                    </div>
+                </Container>
+            </Container>
+        )
+    } 
 }
 
-const mapStateToProps = ({history}) => {
-  return { history }
-};
+const validate = (values) => {
+    const errors = {};
+
+    if (!values.email) {
+        errors.email = "Enter an email address";
+    }
+    if (!values.password) {
+        errors.password = "Enter your password";
+    }
+
+    return errors;
+}
 
 
-export default withRouter(connect()(Home));
+export default reduxForm({
+    validate,
+    form: 'homeForm'
+})(connect()(Home));

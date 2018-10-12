@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Header, Form, Button, Segment } from 'semantic-ui-react';
+import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { registerUser } from '../actions/auth';
 import { setFlash } from '../actions/flash';

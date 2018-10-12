@@ -10,12 +10,23 @@ import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
 import VaultGuide from './Vault/Guide';
+import { connect } from 'react-redux';
 
 class App extends Component {
+
+  renderNavBar = () => {
+    const { user } = this.props;
+    if (user.id) {
+      return (
+        <NavBar />
+      );
+    }
+  }
+
   render() {
     return (
       <div>
-        <NavBar />
+        {this.renderNavBar() }
         <Flash />
         <FetchUser>
           <Switch>
@@ -31,4 +42,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({ user }) => {
+  return { user };
+};
+
+export default connect(mapStateToProps)(App);
