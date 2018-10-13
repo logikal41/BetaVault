@@ -15,6 +15,7 @@ class Register extends React.Component {
                 <label>{field.label}</label>
                 <Form.Input
                     fluid
+                    id={field.id}
                     iconPosition='left'
                     icon={field.icon}
                     type={field.type}
@@ -60,6 +61,7 @@ class Register extends React.Component {
                                 />
                                 <Field
                                     icon='lock'
+                                    id='password'
                                     label='Password'
                                     name='password'
                                     component={this.renderField}
@@ -68,6 +70,7 @@ class Register extends React.Component {
                                 />
                                 <Field
                                     icon='lock'
+                                    id='passwordConfirmation'
                                     label='Re-enter Password'
                                     name='passwordConfirmation'
                                     component={this.renderField}

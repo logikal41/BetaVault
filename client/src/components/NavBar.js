@@ -13,7 +13,7 @@ class NavBar extends Component {
     if (user.id) {
       return (
         <div>
-            <Menu borderless={true} inverted={true}>
+            <Menu inverted={true} borderless={true}>
               <Link to='/'>
                 <Image src={BetaVaultWord} className='welcome-button' size='small' inline={true} spaced='left' />
               </Link>

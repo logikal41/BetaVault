@@ -4,11 +4,11 @@ feature "Register and Logout users", js: true do
 
     scenario "with valid credentials" do
         visit "http://localhost:3000"
-        click_link "Register"
-        fill_in "Email", with: "user@example.com"
-        fill_in "Password", with: "password"
-        fill_in "Password Confirmation", with: "password"
-        click_button "Submit"
+        click_button "Register"
+        fill_in "email", with: "user@example.com"
+        fill_in "password", id: 'password', with: "password"
+        fill_in "passwordConfirmation", id: 'passwordConfirmation', with: "password"
+        click_button "Register"
         
         expect(page).to have_current_path("/")
         expect(page).not_to have_content('Login')
@@ -21,13 +21,13 @@ feature "Register and Logout users", js: true do
 
     scenario "with invalid credentials" do
         visit "http://localhost:3000"
-        click_on "Register"
-        fill_in "Email", with: ""
-        fill_in "Password", with: ""
-        fill_in "Password Confirmation", with: ""
-        click_button "Submit"
+        click_button "Register"
+        fill_in "email", with: ""
+        fill_in "password", id: 'password', with: ""
+        fill_in "passwordConfirmation", id: 'passwordConfirmation', with: ""
+        click_button "Register"
 
         expect(page).to have_current_path("/register")
-        expect(page).to have_content('Login')
+        expect(page).to have_content('Register')
     end
 end
