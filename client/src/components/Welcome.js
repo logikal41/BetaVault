@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Form, Container, Button, Image, Segment, Grid, Message } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { handleLogin } from '../actions/auth';
-import BetaVaultBox from '../images/BetaVault_Word.png';
+import BetaVaultWord from '../images/BetaVault_Word.png';
 import { withRouter } from 'react-router-dom';
 
 class Welcome extends React.Component {
@@ -44,7 +44,7 @@ class Welcome extends React.Component {
                 `}</style>
                 <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
                     <Grid.Column style={{ maxWidth: 450 }}>
-                        <Image src={BetaVaultBox} centered={true} />
+                        <Image src={BetaVaultWord} centered={true} />
                         <Form size='large' onSubmit={ handleSubmit(this.onSubmit) }>
                             <Segment basic>
                                 <Field
@@ -64,7 +64,7 @@ class Welcome extends React.Component {
                                     type='password'
                                 />
                                 <Button fluid={true} size='large' color='green' type='submit' className='welcome-button'>Login</Button>
-                                <Button fluid={true} color='grey' type="button" className='welcome-button' onClick={() => history.push('/register')}>Register</Button>
+                                <Button fluid={true} size='large' color='grey' type="button" className='welcome-button' onClick={() => history.push('/register')}>Register</Button>
                             </Segment>
                         </Form>
                         <Message>

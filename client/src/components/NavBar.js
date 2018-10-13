@@ -1,46 +1,37 @@
 import React, { Component } from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Image } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleLogout } from '../actions/auth';
+import BetaVaultWord from '../images/BetaVault_Word.png';
 
 class NavBar extends Component {
-  rightNavs = () => {
+
+  render() {
     const { user, dispatch, history } = this.props;
 
     if (user.id) {
       return (
-        <Menu.Menu position='right'>
-          <Menu.Item
-            name='Logout'
-            onClick={() => dispatch(handleLogout(history))}
-          />
-        </Menu.Menu>
-      );
-    }
-    return (
-      <Menu.Menu position='right'>
-        <Link to='/register'>
-          <Menu.Item name='Register' />
-        </Link>
-        <Link to='/login'>
-          <Menu.Item name='Login' />
-        </Link>
-      </Menu.Menu>
-    );
-  }
-
-  render() {
-    const { user } = this.props;
-
-    if (user.id) {
-      return (
         <div>
-            <Menu pointing secondary>
+            <Menu borderless={true} inverted={true}>
               <Link to='/'>
-                <Menu.Item name='home' />
+                <Image src={BetaVaultWord} className='welcome-button' size='small' inline={true} spaced='left' />
               </Link>
-              { this.rightNavs() }
+              <Menu.Menu position='right'>
+                <Menu.Item
+                  name='Admin'
+                />
+                <Menu.Item
+                  name='Guide'
+                />
+                <Menu.Item
+                  name='Profile'
+                />
+                <Menu.Item
+                  name='Logout'
+                  onClick={() => dispatch(handleLogout(history))}
+                />
+              </Menu.Menu>
             </Menu>
         </div>
       );
