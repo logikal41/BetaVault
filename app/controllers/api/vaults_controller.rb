@@ -14,7 +14,7 @@ class Api::VaultsController < ApplicationController
 
   def update
     vault = Vault.find(params[:id])
-    Vault.update(vault_params)
+    vault.update(vault_params)
     render json: vault
   end
 

@@ -21,7 +21,7 @@ export const getVault = () => {
 
   export const updateVault = (vault, callBack) => {
     return dispatch => {
-    axios.put(`../../api/vaults/${vault.id}`, vault )
+    axios.put(`/api/vaults/${vault.id}`, vault )
       .then( res => {
         dispatch(setHeaders(res.headers));
         callBack();
@@ -41,6 +41,19 @@ export const getVault = () => {
       .then( () => callBack() )
       .catch( err => {
         dispatch(setFlash('Failed to create Vault', 'red'));
+      })  
+    } 
+  }
+
+  export const deleteVault = (id, callBack) => {
+    return dispatch => {
+    axios.delete(`/api/vaults/${id}`)
+      .then( res => {
+        dispatch(setHeaders(res.headers));
+      })
+      .then( () => callBack() )
+      .catch( err => {
+        dispatch(setFlash('Failed to delete Vault', 'red'));
       })  
     } 
   }

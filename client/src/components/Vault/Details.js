@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { Container, Header, Image, Segment, Button } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 import SwellImage from '../../images/San Rafael Swell.jpg';
+import { deleteVault } from '../../actions/vaults';
 
 class GroupDetails extends Component {
 
     render() {
-        const { activeSelection } = this.props;
+        const { activeSelection, history, dispatch } = this.props;
 
         if ( !activeSelection ) {
             return <div> Loading... </div>
@@ -25,8 +26,10 @@ class GroupDetails extends Component {
                     <Button color='black'>Add Area</Button>
                     <Button color='black'>Add Wall</Button>
                     <Button color='black'>Add Route</Button>
-                    <Button negative floated='right'>Delete Vault</Button>
-                    <Button color='black' floated='right'>Update Vault</Button>
+                    <Button negative floated='right' onClick={() => dispatch(deleteVault(activeSelection.id, () => history.push('/')))}>
+                        Delete
+                    </Button>
+                    <Button floated='right' basic={true} color='black' onClick={() => history.push(`/vault/update/${activeSelection.id}`)}>Update</Button>
                 </Segment>
                 <Header className='description-header'>DESCRIPTION </Header>
                 <Header className='description-body'>{activeSelection.description} </Header>
