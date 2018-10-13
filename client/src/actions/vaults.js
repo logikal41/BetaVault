@@ -31,3 +31,16 @@ export const getVault = () => {
       })  
     } 
   }
+
+  export const createVault = (values, callBack) => {
+    return dispatch => {
+    axios.post('/api/vaults', values )
+      .then( res => {
+        dispatch(setHeaders(res.headers));
+      })
+      .then( () => callBack() )
+      .catch( err => {
+        dispatch(setFlash('Failed to create Vault', 'red'));
+      })  
+    } 
+  }

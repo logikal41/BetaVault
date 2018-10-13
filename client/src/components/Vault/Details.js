@@ -22,11 +22,11 @@ class GroupDetails extends Component {
                     <Image centered={true} size='medium' src={SwellImage} />
                 </div>
                 <Segment basic>
-                    <Button>Add Area</Button>
-                    <Button>Add Wall</Button>
-                    <Button>Add Route</Button>
-                    <Button>Update Vault</Button>
-                    <Button>Delete Vault</Button>
+                    <Button color='black'>Add Area</Button>
+                    <Button color='black'>Add Wall</Button>
+                    <Button color='black'>Add Route</Button>
+                    <Button negative floated='right'>Delete Vault</Button>
+                    <Button color='black' floated='right'>Update Vault</Button>
                 </Segment>
                 <Header className='description-header'>DESCRIPTION </Header>
                 <Header className='description-body'>{activeSelection.description} </Header>

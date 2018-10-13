@@ -9,6 +9,7 @@ import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
 import VaultGuide from './Vault/Guide';
+import NewVaultForm from './Forms/NewVaultForm';
 
 class App extends Component {
 
@@ -21,6 +22,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={UserRouter} />
             <AuthRoute exact path='/register' component={Register} />
+            <ProtectedRoute exact path='/vault/new' component={NewVaultForm} />
             <ProtectedRoute exact path='/vault/:id' component={VaultGuide} />
             <Route component={NoMatch} />
           </Switch>
