@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Header, Button } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 
 class GroupDetails extends Component {
 
     render() {
-        const { activeSelection, history } = this.props;
+        const { activeSelection } = this.props;
 
         if ( !activeSelection ) {
             return <div> Loading... </div>
