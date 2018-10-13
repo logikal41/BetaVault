@@ -11,19 +11,19 @@ import { setFlash } from '../../actions/flash';
 
 class Guide extends Component {
 
-    componentDidMount() {
-        const { dispatch } = this.props;
+    // componentDidMount() {
+    //     const { dispatch } = this.props;
 
-        axios.get('/api/vaults/2') // group 1 is hardcoded since we are only doing this for the san rafael swell at this time
-        .then( res => {
-        //   dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data.areas })
-          dispatch({ type: 'GET_ACTIVE_SELECTION', payload: res.data })
-          dispatch(setHeaders(res.headers));
-        })
-        .catch( err => {
-          dispatch(setFlash('Failed to get vault information', 'red'));
-        })
-    }
+    //     axios.get('/api/vaults/2') // group 1 is hardcoded since we are only doing this for the san rafael swell at this time
+    //     .then( res => {
+    //     //   dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data.areas })
+    //       dispatch({ type: 'GET_ACTIVE_SELECTION', payload: res.data })
+    //       dispatch(setHeaders(res.headers));
+    //     })
+    //     .catch( err => {
+    //       dispatch(setFlash('Failed to get vault information', 'red'));
+    //     })
+    // }
 
     render() {
       

@@ -1,13 +1,21 @@
 import React from 'react';
-import { Header } from 'semantic-ui-react';
+import { Container, Segment, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import VaultList from './Lists/VaultList';
 
 
 class Home extends React.Component {
 
 
     render() {
-        return <Header as="h3">Welcome home!</Header>
+        return (
+            <Container className='jumbotron'>
+                <Segment className='vault-list-buttons'>
+                    <Button>Create Vault</Button>
+                </Segment>
+                <VaultList />
+            </Container>
+        );
     }
 }
 

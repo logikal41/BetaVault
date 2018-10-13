@@ -4,7 +4,7 @@ import NavBar from './NavBar';
 import Register from './Register';
 import Flash from './Flash';
 import UserRouter from './UserRouter';
-// import ProtectedRoute from './ProtectedRoute';
+import ProtectedRoute from './ProtectedRoute';
 import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
@@ -20,9 +20,8 @@ class App extends Component {
         <FetchUser>
           <Switch>
             <Route exact path='/' component={UserRouter} />
-            {/* <AuthRoute exact path='/login' component={Login} /> */}
             <AuthRoute exact path='/register' component={Register} />
-            <AuthRoute exact path='/vault/:id' component={VaultGuide} />
+            <ProtectedRoute exact path='/vault/:id' component={VaultGuide} />
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>
