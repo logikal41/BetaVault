@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Container, Grid, Header } from 'semantic-ui-react';
 import RouteList from '../Lists/RouteList';
 import WallDetails from './WallDetails';
-// import RouteDetails from './Details/RouteDetails';
+import RouteDetails from '../Route/RouteDetails';
 import Comments from './Comments';
 import axios from 'axios';
 import { setHeaders } from '../../actions/headers';
@@ -22,13 +22,13 @@ class Guide extends Component {
             dispatch({ type: 'GET_ACTIVE_SELECTION', payload: res.data.wall })
             this.setState({ wall: res.data.wall })
             
-            // axios.get(`/api/areaname/${res.data.wall.area_id}`)
-            // .then( res => {
-            //     this.setState({ area_name: res.data });
-            // })
-            // .catch( err => {
-            //     dispatch(setFlash('Failed to get the area name', 'red'));
-            // })
+            axios.get(`/api/areaname/${res.data.wall.area_id}`)
+            .then( res => {
+                this.setState({ area_name: res.data });
+            })
+            .catch( err => {
+                dispatch(setFlash('Failed to get the area name', 'red'));
+            })
 
             dispatch(setHeaders(res.headers));
         })
@@ -55,7 +55,7 @@ class Guide extends Component {
             <Container>
                 <Grid>
                     <Grid.Column width={12}>
-                        {/* {activeSelection.wall_id ? 
+                        {activeSelection.wall_id ? 
                             <RouteDetails 
                                 area_name={area_name} 
                                 area_id={wall.area_id} 
@@ -64,9 +64,7 @@ class Guide extends Component {
                             /> 
                             : 
                             <WallDetails area_name={area_name} />
-                        } */}
-                        <WallDetails area_name={area_name} />
-                        <Comments />
+                        }
                     </Grid.Column>
                     <Grid.Column width={4}>
                         <RouteList wall={wall} />
