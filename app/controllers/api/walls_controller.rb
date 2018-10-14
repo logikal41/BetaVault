@@ -6,9 +6,8 @@ class Api::WallsController < ApplicationController
 
     def show
         wall = Wall.find(params[:id])
-        # routes = wall.routes.order(id: :asc)
-        # render json: { wall: wall, routes: routes }
-        render json: wall
+        routes = wall.routes.order(id: :asc)
+        render json: { wall: wall, routes: routes }
     end
 
     def update

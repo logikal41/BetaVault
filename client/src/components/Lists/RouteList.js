@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, Header, Container, Button } from 'semantic-ui-react';
+import { List, Header, Container, Button, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom'; 
 import Map from '../../images/googlemaps.jpg';

@@ -56,44 +56,44 @@ Wall.create(area_id: 6, name: 'Sandcastle, Outpost, Secret Pillar', description:
 Wall.create(area_id: 6, name: 'White Knight, Mother Goose', description: 'White Knight is approximately 1 mile (1.6km) north of I-70. The landform may be identified by a small tree at the center...');
 
 # Routes at each wall
-# Route.create(wall_id: 1, name: 'Scenic Byway', difficulty: '5.10', pitch: 4, length: '400 feet', rating: 4, first_ascent: 'James Garrett, Franziska Garret, 1992', 
-#     description: 'Scenic Byway climbs to the rim and is in the center of a black wall with two chains visible at the top of Pitch 1. Rappel slings are visible at the top of 
-#     pitches 2, 3, and 4. Mike Friedrichs: "Pitch 1 is the best 5.9 handcrack in the swell."', gear: 'Standard desert rack; (1) set of TCUs; #1.5 through #3 Friends for Pitch 1; #6 
-#     Friend for the offwidth of Pitch 2; (2) quickdraws', descent: 'Rappel the route.');
-# Route.create(wall_id: 1, name: 'Metacarpal Road Map', difficulty: '5.9', pitch: 2, length: '180 feet', rating: 1, first_ascent: 'James Garrett, Franziska Garret, 1992', 
-#     description: 'Metacarpal Road Map ascends hands-to-fingers to a roof. Pitch 1: Begin as for Scenic Byway, then climb for 20 feet (6m) and traverse right to a bush',
-#     gear: 'One set of Friends with double #1 through #3.5', descent: 'Rappel the route.');
-# Route.create(wall_id: 1, name: 'Lonesome Scenery', difficulty: '5.12a', pitch: 1, length: '75 feet', rating: 0, first_ascent: 'Mike Friedrichs, Joe Cupps, 1993',
-#     description: 'Lonesome Scenery is 15 feet left of Scenic Highway. The route climbs to a bolt, then traverses right to the top of Scenic Highway. Rappel slings are visible from below.',
-#     gear: 'TCUs; small nuts; (1) quickdraw', descent: 'Rappel the route.');
-# Route.create(wall_id: 1, name: 'Scenic Highway', difficulty: '5.8', pitch: 1, length: '75 feet', rating: 1, first_ascent: 'James Garrett, Franziska Garrett, 1992',
-#     description: 'Scenic Highway is 15 feet right of Lonesome Scenery. It curves up a flake with a handcrack that ends at a ceiling and a 2-bolt anchor.',
-#     gear: 'Standard desert rack', descent: 'Rappel the route.');
+Route.create(wall_id: 1, name: 'Scenic Byway', difficulty: '5.10', pitch: 4, length: '400 feet', rating: 4, first_ascent: 'James Garrett, Franziska Garret, 1992', 
+    description: 'Scenic Byway climbs to the rim and is in the center of a black wall with two chains visible at the top of Pitch 1. Rappel slings are visible at the top of 
+    pitches 2, 3, and 4. Mike Friedrichs: "Pitch 1 is the best 5.9 handcrack in the swell."', gear: 'Standard desert rack; (1) set of TCUs; #1.5 through #3 Friends for Pitch 1; #6 
+    Friend for the offwidth of Pitch 2; (2) quickdraws', descent: 'Rappel the route.');
+Route.create(wall_id: 1, name: 'Metacarpal Road Map', difficulty: '5.9', pitch: 2, length: '180 feet', rating: 1, first_ascent: 'James Garrett, Franziska Garret, 1992', 
+    description: 'Metacarpal Road Map ascends hands-to-fingers to a roof. Pitch 1: Begin as for Scenic Byway, then climb for 20 feet (6m) and traverse right to a bush',
+    gear: 'One set of Friends with double #1 through #3.5', descent: 'Rappel the route.');
+Route.create(wall_id: 1, name: 'Lonesome Scenery', difficulty: '5.12a', pitch: 1, length: '75 feet', rating: 0, first_ascent: 'Mike Friedrichs, Joe Cupps, 1993',
+    description: 'Lonesome Scenery is 15 feet left of Scenic Highway. The route climbs to a bolt, then traverses right to the top of Scenic Highway. Rappel slings are visible from below.',
+    gear: 'TCUs; small nuts; (1) quickdraw', descent: 'Rappel the route.');
+Route.create(wall_id: 1, name: 'Scenic Highway', difficulty: '5.8', pitch: 1, length: '75 feet', rating: 1, first_ascent: 'James Garrett, Franziska Garrett, 1992',
+    description: 'Scenic Highway is 15 feet right of Lonesome Scenery. It curves up a flake with a handcrack that ends at a ceiling and a 2-bolt anchor.',
+    gear: 'Standard desert rack', descent: 'Rappel the route.');
 
-# Route.create(wall_id: 2, name: 'Anti-Swell', difficulty: '5.10b', pitch: 1, length: '60 feet', rating: 0, first_ascent: 'Mike Friedrichs, Todd Leeds 1995',
-#     description: 'Anti-Swell is a sport route beginning above a good-sized talus cone/boulder field. Climb the left wall of a large left-facing dihedral on the west side of the road.
-#     Face climb to rappel anchors visible from below.', gear: 'Eight quickdraws', descent: 'Rappel the route from double-bolts.');
-# Route.create(wall_id: 2, name: 'Bradley Mountain Wear', difficulty: '5.11d', pitch: 1, length: '165 feet', rating: 1, first_ascent: 'Mike Friedrichs, Todd Leeds, February 1995',
-#     description: 'This sport climb is left of a chimney system above large boulders positioned on a talus slope at the right end of a buttress on the east side of Buckhorn Wash,
-#     south of Anti-Swell....', gear: 'Fifteen quickdraws', descent: 'One double-rope rappel from three bolts.');
+Route.create(wall_id: 2, name: 'Anti-Swell', difficulty: '5.10b', pitch: 1, length: '60 feet', rating: 0, first_ascent: 'Mike Friedrichs, Todd Leeds 1995',
+    description: 'Anti-Swell is a sport route beginning above a good-sized talus cone/boulder field. Climb the left wall of a large left-facing dihedral on the west side of the road.
+    Face climb to rappel anchors visible from below.', gear: 'Eight quickdraws', descent: 'Rappel the route from double-bolts.');
+Route.create(wall_id: 2, name: 'Bradley Mountain Wear', difficulty: '5.11d', pitch: 1, length: '165 feet', rating: 1, first_ascent: 'Mike Friedrichs, Todd Leeds, February 1995',
+    description: 'This sport climb is left of a chimney system above large boulders positioned on a talus slope at the right end of a buttress on the east side of Buckhorn Wash,
+    south of Anti-Swell....', gear: 'Fifteen quickdraws', descent: 'One double-rope rappel from three bolts.');
 
-# Route.create(wall_id: 3, name: 'Outhouse Tower - Chopped Sand', difficulty: '5.8 A0', pitch: 1, length: '160 feet', rating: 0, first_ascent: 'James Garrett, solo 1990.',
-#     description: 'Chopped Sand begins beyond the left profile of the landform when viewed from the road, then climbs a ridge and finally a large summit block (Outhouse Tower).',
-#     gear: 'One set of Friends', descent: 'Rappel the route.');
-# Route.create(wall_id: 3, name: 'Home Haunt', difficulty: '5.10 A1', pitch: 3, length: '160 feet', rating: 0, first_ascent: 'James Garrett, Franziska Garrett, 9 October 1996',
-#     description: 'Home Haunt is the next landform south of Outhouse Tower, 200 feet. The landform is 25 feet from the east side of the road...',
-#     gear: 'Standard desert rack; a few Lost Arrows; (4) quickdraws', descent: 'Walk off to the left approximately 1500 feet.');
+Route.create(wall_id: 3, name: 'Outhouse Tower - Chopped Sand', difficulty: '5.8 A0', pitch: 1, length: '160 feet', rating: 0, first_ascent: 'James Garrett, solo 1990.',
+    description: 'Chopped Sand begins beyond the left profile of the landform when viewed from the road, then climbs a ridge and finally a large summit block (Outhouse Tower).',
+    gear: 'One set of Friends', descent: 'Rappel the route.');
+Route.create(wall_id: 3, name: 'Home Haunt', difficulty: '5.10 A1', pitch: 3, length: '160 feet', rating: 0, first_ascent: 'James Garrett, Franziska Garrett, 9 October 1996',
+    description: 'Home Haunt is the next landform south of Outhouse Tower, 200 feet. The landform is 25 feet from the east side of the road...',
+    gear: 'Standard desert rack; a few Lost Arrows; (4) quickdraws', descent: 'Walk off to the left approximately 1500 feet.');
 
-# Route.create(wall_id: 4, name: 'Street Legal', difficulty: '5.11', pitch: 1, length: '80 feet', rating: 5, first_ascent: 'Mike Friedrichs, Mary Ellen Gage, Gene Roush, 1990',
-#     description: 'Street Legal is 15 feet left of BBQ Bomber. The route climbs a right-facing dihedral to rappel slings visible on the left wall below a prominent overhang.',
-#     gear: 'Friends (1) #2.5; TCUs', descent: 'Rappel the route.');
-# Route.create(wall_id: 4, name: 'BBQ Bomber', difficulty: '5.11', pitch: 1, length: '155 feet', rating: 5, first_ascent: 'Names withheld by request of first ascent party.',
-#     description: 'BBQ Bomber is plaqued with the date 3/90. Begin in a left-facing dihedral left of a large fallen pillar. Climbe to a ledge right of a prominent cieling...',
-#     gear: 'Friends (2-3) #0.5, (2) #1, (5) #1.5, (3) #2, (1) #2.5, #3, (2-3) #3.5, (3) #4', descent: 'Rappel the route from the top of the climb or traverse 30 feet right and rappel from slings visible from below.');
-# Route.create(wall_id: 4, name: 'Ladies of the 80s', difficulty: 'A2+ / C1', pitch: 1, length: '130 feet', rating: 0, first_ascent: 'Rob McKeracher, Matt Fetbrod, 29 April 1996',
-#     description: 'Ladies of the 80s climbs a uniform 0.25-inch splitter crack right of a fallen pillar (right of BBQ Bomber) to a three-piton rappel station...',
-#     gear: 'For clean aid (to avoid excessive nailing, especially on the first 30 feet) bring (5-10) large Lowe Balls; (10) #0 TCUs, a few Blue Aliens, (1) medium Leeper Z-ton; quickdraws',
-#     descent: 'One double-rope rappel down the route');
+Route.create(wall_id: 4, name: 'Street Legal', difficulty: '5.11', pitch: 1, length: '80 feet', rating: 5, first_ascent: 'Mike Friedrichs, Mary Ellen Gage, Gene Roush, 1990',
+    description: 'Street Legal is 15 feet left of BBQ Bomber. The route climbs a right-facing dihedral to rappel slings visible on the left wall below a prominent overhang.',
+    gear: 'Friends (1) #2.5; TCUs', descent: 'Rappel the route.');
+Route.create(wall_id: 4, name: 'BBQ Bomber', difficulty: '5.11', pitch: 1, length: '155 feet', rating: 5, first_ascent: 'Names withheld by request of first ascent party.',
+    description: 'BBQ Bomber is plaqued with the date 3/90. Begin in a left-facing dihedral left of a large fallen pillar. Climbe to a ledge right of a prominent cieling...',
+    gear: 'Friends (2-3) #0.5, (2) #1, (5) #1.5, (3) #2, (1) #2.5, #3, (2-3) #3.5, (3) #4', descent: 'Rappel the route from the top of the climb or traverse 30 feet right and rappel from slings visible from below.');
+Route.create(wall_id: 4, name: 'Ladies of the 80s', difficulty: 'A2+ / C1', pitch: 1, length: '130 feet', rating: 0, first_ascent: 'Rob McKeracher, Matt Fetbrod, 29 April 1996',
+    description: 'Ladies of the 80s climbs a uniform 0.25-inch splitter crack right of a fallen pillar (right of BBQ Bomber) to a three-piton rappel station...',
+    gear: 'For clean aid (to avoid excessive nailing, especially on the first 30 feet) bring (5-10) large Lowe Balls; (10) #0 TCUs, a few Blue Aliens, (1) medium Leeper Z-ton; quickdraws',
+    descent: 'One double-rope rappel down the route');
 
 
 

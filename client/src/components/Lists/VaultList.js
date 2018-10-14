@@ -36,27 +36,29 @@ class VaultList extends Component {
             <Segment basic>
                 <Button className='list-button-creation' fluid={true} onClick={() => history.push('/vault/new')}>New Vault</Button>
             </Segment>
+            <Container className='comments-container'>
             {/* List out all vaults in the database as cards */}
-            <Grid columns={4}>
-            { vaults.map( vault =>
-                <Grid.Column key={vault.id}>
-                    <Card onClick={() => history.push(`/vault/${vault.id}`)}>
-                        <Image src={SwellImage} />
-                        <Card.Content>
-                            <Card.Header>{vault.name}</Card.Header>
-                            <Card.Meta>
-                                <span className='date'>Created: 2018</span>
-                            </Card.Meta>
-                            <Card.Description>{vault.description}</Card.Description>
-                        </Card.Content>
-                        <Card.Content extra>
-                            <Icon name='user' />
-                            22 Members
-                        </Card.Content>
-                    </Card>
-                </Grid.Column>
-            )}
-            </Grid>
+                <Grid columns={4}>
+                { vaults.map( vault =>
+                    <Grid.Column key={vault.id}>
+                        <Card onClick={() => history.push(`/vault/${vault.id}`)}>
+                            <Image src={SwellImage} />
+                            <Card.Content>
+                                <Card.Header>{vault.name}</Card.Header>
+                                <Card.Meta>
+                                    <span className='date'>Created: 2018</span>
+                                </Card.Meta>
+                                <Card.Description>{vault.description}</Card.Description>
+                            </Card.Content>
+                            <Card.Content extra>
+                                <Icon name='user' />
+                                22 Members
+                            </Card.Content>
+                        </Card>
+                    </Grid.Column>
+                )}
+                </Grid>
+            </Container>
         </Container>
       )
   }

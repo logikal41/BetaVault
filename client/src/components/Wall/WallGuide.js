@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Container, Grid, Header } from 'semantic-ui-react';
-// import RouteList from './Lists/RouteList';
+import RouteList from '../Lists/RouteList';
 import WallDetails from './WallDetails';
 // import RouteDetails from './Details/RouteDetails';
 import Comments from './Comments';
@@ -18,8 +18,8 @@ class Guide extends Component {
 
         axios.get(`/api/walls/${match.params.id}`)
         .then( res => {
-            // dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data.routes })
-            dispatch({ type: 'GET_ACTIVE_SELECTION', payload: res.data })
+            dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data.routes })
+            dispatch({ type: 'GET_ACTIVE_SELECTION', payload: res.data.wall })
             this.setState({ wall: res.data.wall })
             
             // axios.get(`/api/areaname/${res.data.wall.area_id}`)
@@ -54,9 +54,6 @@ class Guide extends Component {
         return (
             <Container>
                 <Grid>
-                    <Grid.Column width={4}>
-                        {/* <RouteList wall={wall} /> */}
-                    </Grid.Column>
                     <Grid.Column width={12}>
                         {/* {activeSelection.wall_id ? 
                             <RouteDetails 
@@ -70,6 +67,9 @@ class Guide extends Component {
                         } */}
                         <WallDetails area_name={area_name} />
                         <Comments />
+                    </Grid.Column>
+                    <Grid.Column width={4}>
+                        <RouteList wall={wall} />
                     </Grid.Column>
                 </Grid>
             </Container>
