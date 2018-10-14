@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Container, Header, Image, Segment, Button } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
-import SwellImage from '../../images/San Rafael Swell.jpg';
+import MesaArch from '../../images/mesa arch.jpg';
 import { deleteVault } from '../../actions/vaults';
 
 class GroupDetails extends Component {
@@ -20,7 +20,7 @@ class GroupDetails extends Component {
                     {/* <Button floated='right' basic={true} onClick={() => history.push(`/group/update/${activeSelection.id}`)}>Update</Button> */}
                 </Header>
                 <div className='vault-image'>
-                    <Image centered={true} size='medium' src={SwellImage} />
+                    <Image centered={true} src={MesaArch} />
                 </div>
                 <Segment basic>
                     <Button color='black'>Add Area</Button>

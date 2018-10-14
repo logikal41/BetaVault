@@ -70,10 +70,10 @@ const validate = (values) => {
     const errors = {};
 
     if (!values.name) {
-        errors.name = "Enter vault name";
+        errors.name = "Enter a vault name";
     }
     if (!values.description) {
-        errors.description = "Enter vault description";
+        errors.description = "Enter a vault description";
     }
 
     return errors;

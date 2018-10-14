@@ -59,10 +59,10 @@ const validate = (values) => {
     const errors = {};
 
     if (!values.name) {
-        errors.name = "Enter an area name";
+        errors.name = "Enter a vault name";
     }
     if (!values.description) {
-        errors.description = "Enter an area description";
+        errors.description = "Enter a vault description";
     }
 
     return errors;
