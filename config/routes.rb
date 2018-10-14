@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :vaults
     resources :areas
     resources :walls
+    resources :routes
   end
 
   #Do not place any routes below this one
