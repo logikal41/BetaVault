@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-import { List, Header, Container, Button, Image } from 'semantic-ui-react';
+import { List, Header, Container, Button, Image, Loader, Dimmer, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Map from '../../images/googlemaps.jpg';
 
 class WallList extends Component {
     
   render() {
-    const { activeList, activeSelection, history } = this.props;
+    const { activeList, activeSelection, toggleCreate } = this.props;
 
     if ( activeList.length === 0) {
       return (
-        <Container>
-          <Header as='h1' textAlign='center'>Loading...</Header>
-          <Link to='/guide'>Main Menu</Link>
+        <Container className='comments-container'>
+          <Segment basic> 
+            <Dimmer active inverted>
+              <Loader>loading walls...</Loader>
+            </Dimmer>
+          </Segment>
         </Container>
       )
     } else {
       return (
         <Container className='list-container'>
           <Image src={Map} size='medium' />
-          <Button className='list-button-creation' fluid={true} onClick={() => history.push('/wall/new')}>Add Wall</Button>
+          <Button className='list-button-creation' fluid={true} onClick={() => toggleCreate()}>Add Wall</Button>
           <Header className='list-header' textAlign='left'>WALLS IN {activeSelection.name.toUpperCase()}</Header>
           <List>
             { activeList.map( wall => {
@@ -41,4 +44,4 @@ const mapStateToProps = ({ activeList, activeSelection }) => {
   return { activeList, activeSelection }
 }
 
-export default withRouter(connect(mapStateToProps)(WallList));
+export default connect(mapStateToProps)(WallList);

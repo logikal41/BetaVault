@@ -7,11 +7,13 @@ export const createWall = ( {id, name, description} , callBack ) => {
   return dispatch => {
   axios.post('/api/walls', { area_id: id, name, description })
     .then( res => {
+      dispatch({ type: 'ADJOIN_ACTIVE_LIST', payload: res.data  })
       dispatch(setHeaders(res.headers));
       callBack();
     })
     .catch( err => {
-      dispatch(setFlash('Failed to create wall', 'red'));
+      dispatch(setFlash('Failed to create wall!', 'red'));
+      callBack();
     })  
   } 
 }
@@ -25,7 +27,7 @@ export const getWall = id => {
       dispatch(setHeaders(res.headers));
     })
     .catch( err => {
-      dispatch(setFlash('Failed to get wall information', 'red'));
+      dispatch(setFlash('Failed to get wall information!', 'red'));
     })
   }
 }
@@ -38,7 +40,7 @@ export const deleteWall = (id, callBack) => {
     })
     .then( () => callBack() )
     .catch( err => {
-      dispatch(setFlash('Failed to delete Wall', 'red'));
+      dispatch(setFlash('Failed to delete wall!', 'red'));
     })  
   } 
 }
@@ -51,7 +53,7 @@ export const updateWall = ({id, name, description}, callBack) => {
       callBack();
     })
     .catch( err => {
-      dispatch(setFlash('Failed to update area', 'red'));
+      dispatch(setFlash('Failed to update wall information!', 'red'));
     })  
   } 
 }

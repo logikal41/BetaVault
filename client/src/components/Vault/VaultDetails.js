@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Header, Image, Segment, Button } from 'semantic-ui-react';
+import { Container, Header, Image, Segment, Button, Dimmer, Loader} from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 import MesaArch from '../../images/mesa arch.jpg';
 import { deleteVault } from '../../actions/vaults';
@@ -11,7 +11,15 @@ class GroupDetails extends Component {
         const { activeSelection, history, dispatch } = this.props;
 
         if ( !activeSelection ) {
-            return <div> Loading... </div>
+            return (
+                <Container className='comments-container'>
+                    <Segment basic> 
+                        <Dimmer active inverted>
+                            <Loader>loading vault details...</Loader>
+                        </Dimmer>
+                    </Segment>
+                </Container>
+            )
         }
 
         return (
@@ -25,11 +33,6 @@ class GroupDetails extends Component {
                 <div>
                     <Image centered={true} src={MesaArch} />
                 </div>
-                <Segment textAlign='center' basic>
-                    <Button color='black' size='large'>Add Area</Button>
-                    <Button color='black' size='large'>Add Wall</Button>
-                    <Button color='black' size='large'>Add Route</Button>
-                </Segment>
                 <Header className='description-header'>DESCRIPTION </Header>
                 <Header className='description-body'>{activeSelection.description} </Header>
             </Container>

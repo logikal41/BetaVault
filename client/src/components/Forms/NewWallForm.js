@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Form, Header, Container, Button } from 'semantic-ui-react';
 import { createWall } from '../../actions/walls';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class NewWallForm extends React.Component {
 
@@ -21,17 +22,18 @@ class NewWallForm extends React.Component {
     }
 
     onSubmit = (values) => {
-        const { dispatch, history } = this.props;
+        const { dispatch, history, toggleCreate } = this.props;
         const { id } = this.props.activeSelection;
         dispatch(createWall( { id, ...values}, () => history.push(`/area/${id}`) ));
+        toggleCreate();
     }
 
     render() {
-        const { handleSubmit, history, activeSelection } = this.props;
+        const { handleSubmit, toggleCreate } = this.props;
 
         return (
             <Container className='make-form-container'>
-                <Header className='details-header' textAlign='left'>New Wall Form</Header>
+                <Header className='details-header' textAlign='left'>Create New Wall</Header>
                 <Form onSubmit={ handleSubmit(this.onSubmit) }>
                     <Field
                         label='NAME OF WALL'
@@ -45,8 +47,8 @@ class NewWallForm extends React.Component {
                         component={this.renderField}
                         placeholder='description'
                     />
-                    <Button color='black' floated='left'>CREATE WALL</Button>
-                    <Button color='black' floated='left' basic={true} onClick={() => history.push(`/area/${activeSelection.id}`)}>CANCEL</Button>
+                    <Button color='black' floated='left' className='welcome-button'>CREATE WALL</Button>
+                    <Button color='black' floated='left' basic={true} className='welcome-button' onClick={() => toggleCreate()}>CANCEL</Button>
                 </Form>
             </Container>
         )
@@ -70,7 +72,7 @@ const mapStateToProps = ({ activeSelection }) => {
     return { activeSelection }
 };
 
-export default reduxForm({
+export default withRouter(reduxForm({
     validate,
     form: 'NewWallForm'
-})(connect(mapStateToProps)(NewWallForm));
+})(connect(mapStateToProps)(NewWallForm)));

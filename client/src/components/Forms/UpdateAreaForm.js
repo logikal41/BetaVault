@@ -48,7 +48,7 @@ class UpdateAreaForm extends React.Component {
 
         return (
             <Container className='make-form-container'>
-                <Header className='details-header' textAlign='left'>Update Area Form</Header>
+                <Header className='details-header' textAlign='left'>Update Area</Header>
                 <Form onSubmit={ handleSubmit(this.onSubmit) }>
                     <Field
                         label='NAME OF AREA'
