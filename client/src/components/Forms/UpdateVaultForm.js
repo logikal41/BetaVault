@@ -15,7 +15,7 @@ class UpdateVaultForm extends Component {
 
         axios.get(`/api/vaults/${id}`)
         .then( res => {
-            initialize(res.data);
+            initialize(res.data.vault);
             dispatch(setHeaders(res.headers));
         })
         .catch( err => {

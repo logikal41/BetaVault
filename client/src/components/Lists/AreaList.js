@@ -20,7 +20,8 @@ class AreaList extends Component {
       return (
         <Container className='list-container'>
           <Image src={Map} size='medium' />
-          <Button className='list-button-creation' fluid={true} onClick={() => history.push('/area/new')}>Add Area</Button>
+          <Button className='list-button-creation' fluid={true} onClick={() => this.props.toggleCreate()}>Add Area</Button>
+          {/* <Button className='list-button-creation' fluid={true} onClick={() => history.push('/area/new')}>Add Area</Button> */}
           <Header className='list-header' textAlign='left'>AREAS</Header>
           <List>
             { activeList.map( area => {
