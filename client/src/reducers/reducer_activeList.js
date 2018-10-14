@@ -9,8 +9,8 @@ const activeList = (state = [], action) => {
       //   return state.filter( route => route.id !== action.payload );
     //   case CLEAR_ROUTES:
     //     return [];
-    //   case CREATE_ROUTE:
-    //     return [action.payload, ...state];
+      case 'ADJOIN_ACTIVE_LIST':
+        return [...state, action.payload];
     //   case UPDATE_ROUTE:
     //     const originalState = state.filter(route => route.id !== route.payload.id);
     //     return [ action.area, ...originalState];

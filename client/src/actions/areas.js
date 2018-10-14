@@ -46,7 +46,7 @@ export const createArea = ({name, description}, vault_id, callBack) => {
   return dispatch => {
   axios.post('/api/areas', { vault_id, name, description })
     .then( res => {
-      debugger
+      dispatch({ type: 'ADJOIN_ACTIVE_LIST', payload: res.data  })
       dispatch(setHeaders(res.headers));
       callBack();
     })
