@@ -13,6 +13,7 @@ import NewVaultForm from './Forms/NewVaultForm';
 import UpdateVaultForm from './Forms/UpdateVaultForm';
 import NewAreaForm from './Forms/NewAreaForm';
 import AreaGuide from './Area/AreaGuide';
+import UpdateAreaForm from './Forms/UpdateAreaForm';
 
 class App extends Component {
 
@@ -29,6 +30,7 @@ class App extends Component {
             <ProtectedRoute exact path='/area/new' component={NewAreaForm} />
             <ProtectedRoute exact path='/vault/update/:id' component={UpdateVaultForm} />
             <ProtectedRoute exact path='/vault/:id' component={VaultGuide} />
+            <ProtectedRoute exact path='/area/update/:id' component={UpdateAreaForm} />
             <ProtectedRoute exact path='/area/:id' component={AreaGuide} />
             <Route component={NoMatch} />
           </Switch>

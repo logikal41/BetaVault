@@ -18,7 +18,7 @@ class AreaDetails extends Component {
 
                 <Header className='details-header'> {activeSelection.name}
                     <Button floated='right' basic={true} 
-                        onClick={() => dispatch(deleteArea(activeSelection.id, () => history.push('/guide')))}>
+                        onClick={() => dispatch(deleteArea(activeSelection.id, () => history.push(`/vault/${activeSelection.vault_id}`)))}>
                         Delete
                     </Button>
                     <Button floated='right' basic={true} onClick={() => history.push(`/area/update/${activeSelection.id}`)}>Update</Button>

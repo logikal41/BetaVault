@@ -31,7 +31,7 @@ export const getArea = id => {
 
 export const updateArea = ({id, name, description}, callBack) => {
   return dispatch => {
-  axios.put(`../../api/areas/${id}`, { name, description })
+  axios.put(`/api/areas/${id}`, { name, description })
     .then( res => {
       dispatch(setHeaders(res.headers));
       callBack();
