@@ -17,19 +17,18 @@ class GroupDetails extends Component {
         return (
             <Container className='comments-container'>
                 <Header className='details-header'> {activeSelection.name}
-                    {/* <Button floated='right' basic={true} onClick={() => history.push(`/group/update/${activeSelection.id}`)}>Update</Button> */}
-                </Header>
-                <div className='vault-image'>
-                    <Image centered={true} src={MesaArch} />
-                </div>
-                <Segment basic>
-                    <Button color='black'>Add Area</Button>
-                    <Button color='black'>Add Wall</Button>
-                    <Button color='black'>Add Route</Button>
                     <Button negative floated='right' onClick={() => dispatch(deleteVault(activeSelection.id, () => history.push('/')))}>
                         Delete
                     </Button>
                     <Button floated='right' basic={true} color='black' onClick={() => history.push(`/vault/update/${activeSelection.id}`)}>Update</Button>
+                </Header>
+                <div>
+                    <Image centered={true} src={MesaArch} />
+                </div>
+                <Segment textAlign='center' basic>
+                    <Button color='black' size='large'>Add Area</Button>
+                    <Button color='black' size='large'>Add Wall</Button>
+                    <Button color='black' size='large'>Add Route</Button>
                 </Segment>
                 <Header className='description-header'>DESCRIPTION </Header>
                 <Header className='description-body'>{activeSelection.description} </Header>

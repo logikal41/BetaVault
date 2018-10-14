@@ -53,7 +53,7 @@
     color: blue;
 }
 
-.details-container{
+.details-container {
 
     margin-top: 2em;
     background-color: #f4f4f4;
@@ -148,8 +148,4 @@
 
 .welcome-button {
     margin-top: 5px !important;
-}
-
-.jumbotron {
-    margin-top: 10px;
 }

@@ -6,7 +6,7 @@ import ClimberFall from '../images/climber fall.jpg'
 class NoMatch extends Component {
   render() {
     return (
-      <Container className='jumbotron'>
+      <Container className='details-container'>
         <Image centered={true} src={ClimberFall} />
         <Header as='h1' textAlign='center'>
           You are off route!

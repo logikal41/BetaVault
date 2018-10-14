@@ -51,7 +51,8 @@ export const createArea = ({name, description}, vault_id, callBack) => {
       callBack();
     })
     .catch( err => {
-      dispatch(setFlash('Failed to create area', 'red'));
+      dispatch(setFlash('Failed to create area!', 'red'));
+      callBack();
     })  
   } 
 }

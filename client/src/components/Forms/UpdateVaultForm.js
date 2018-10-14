@@ -19,7 +19,7 @@ class UpdateVaultForm extends Component {
             dispatch(setHeaders(res.headers));
         })
         .catch( err => {
-            dispatch(setFlash('Failed to get Vault information', 'red'));
+            dispatch(setFlash('Failed to get vault information!', 'red'));
         })
     }
 
@@ -48,7 +48,7 @@ class UpdateVaultForm extends Component {
 
         return (
             <Container className='make-form-container'>
-                <Header className='details-header' textAlign='left'>Update Vault Form</Header>
+                <Header className='details-header' textAlign='left'>Update Vault</Header>
                 <Form onSubmit={ handleSubmit(this.onSubmit) }>
                     <Field
                         label='NAME OF VAULT'
@@ -60,8 +60,8 @@ class UpdateVaultForm extends Component {
                         name='description'
                         component={this.renderField}
                     />
-                    <Button color='black' floated='left'>UPDATE VAULT</Button>
-                    <Button color='black' floated='left' basic={true} onClick={() => history.push(`/vault/${id}`)}>CANCEL</Button>
+                    <Button color='black' floated='left' className='welcome-button'>UPDATE VAULT</Button>
+                    <Button color='black' floated='left' basic={true} className='welcome-button' onClick={() => history.push(`/vault/${id}`)}>CANCEL</Button>
                 </Form>
             </Container>
         )

@@ -8,7 +8,6 @@ import { setFlash } from '../../actions/flash';
 import SwellImage from '../../images/San Rafael Swell.jpg';
 
 class VaultList extends Component {
-    state = { vaults: [] };
 
     // Retrieve all the vaults from the database
     componentDidMount() {
@@ -16,10 +15,9 @@ class VaultList extends Component {
 
         axios.get('/api/vaults')
         .then( res => {
-          this.setState({vaults: res.data });
-          // clear out the active selection and list every time you go to the home screen
+          // clear out the active selection every time you go to the vault list
           dispatch({ type: 'GET_ACTIVE_SELECTION', payload: {} });
-          dispatch({ type: 'GET_ACTIVE_LIST', payload: [] });
+          dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data });
           dispatch(setHeaders(res.headers));
         })
         .catch( err => {
@@ -28,31 +26,39 @@ class VaultList extends Component {
     }
 
   render() {
-      const { vaults } = this.state;
-      const { history } = this.props;
+      const { history, activeList } = this.props;
 
       return (
-        <Container className='vault-list'>
+        <Container>
             <Segment basic>
                 <Button className='list-button-creation' fluid={true} onClick={() => history.push('/vault/new')}>New Vault</Button>
             </Segment>
             <Container className='comments-container'>
             {/* List out all vaults in the database as cards */}
                 <Grid columns={4}>
-                { vaults.map( vault =>
+                { activeList.map( vault =>
                     <Grid.Column key={vault.id}>
                         <Card onClick={() => history.push(`/vault/${vault.id}`)}>
+
+                            {/* Hard coded image for now */}
                             <Image src={SwellImage} />
+
                             <Card.Content>
                                 <Card.Header>{vault.name}</Card.Header>
                                 <Card.Meta>
+
+                                    {/* Hard coded creation date */}
                                     <span className='date'>Created: 2018</span>
+
                                 </Card.Meta>
                                 <Card.Description>{vault.description}</Card.Description>
                             </Card.Content>
                             <Card.Content extra>
+
+                                {/* Hard coded member count */}
                                 <Icon name='user' />
                                 22 Members
+                                
                             </Card.Content>
                         </Card>
                     </Grid.Column>
@@ -64,4 +70,8 @@ class VaultList extends Component {
   }
 }
 
-export default withRouter(connect()(VaultList));
+const mapStateToProps = ({ activeList }) => {
+    return ({ activeList });
+}
+
+export default withRouter(connect(mapStateToProps)(VaultList));

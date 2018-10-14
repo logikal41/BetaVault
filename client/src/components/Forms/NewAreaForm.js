@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Form, Header, Container, Button } from 'semantic-ui-react';
 import { createArea } from '../../actions/areas';
 import { connect } from 'react-redux';
+//might not actually need to push the user anywhere if we are just toggling the create form
 import { withRouter } from 'react-router-dom';
 
 class NewAreaForm extends React.Component {
@@ -22,13 +23,15 @@ class NewAreaForm extends React.Component {
     }
 
     onSubmit = (values) => {
-        const { dispatch, history, vault_id } = this.props;
+        const { dispatch, history, vault_id, toggleCreate } = this.props;
+        // need to push the user anywhere with this action????
+        // toggle create may be enough
         dispatch(createArea(values, vault_id, () => history.push(`/vault/${vault_id}`) ));
-        this.props.toggleCreate();
+        toggleCreate();
     }
 
     render() {
-        const { handleSubmit, history } = this.props;
+        const { handleSubmit, toggleCreate } = this.props;
 
         return (
             <Container className='make-form-container'>
@@ -49,8 +52,7 @@ class NewAreaForm extends React.Component {
                     
                     <div>
                         <Button color='black' floated='left'>CREATE AREA</Button>
-                        <Button color='black' floated='left' basic={true} onClick={() => this.props.toggleCreate()}>CANCEL</Button>
-                        {/* <Button color='black' floated='left' basic={true} onClick={() => history.push('/')}>CANCEL</Button> */}
+                        <Button color='black' floated='left' basic={true} onClick={() => toggleCreate()}>CANCEL</Button>
                     </div>
                 </Form>
             </Container>

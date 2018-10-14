@@ -18,8 +18,8 @@ class Guide extends Component {
 
         axios.get(`/api/walls/${match.params.id}`)
         .then( res => {
-            dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data.routes })
             dispatch({ type: 'GET_ACTIVE_SELECTION', payload: res.data.wall })
+            dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data.routes })
             this.setState({ wall: res.data.wall })
             
             axios.get(`/api/areaname/${res.data.wall.area_id}`)
@@ -65,6 +65,7 @@ class Guide extends Component {
                             : 
                             <WallDetails area_name={area_name} />
                         }
+                        <Comments />
                     </Grid.Column>
                     <Grid.Column width={4}>
                         <RouteList wall={wall} />

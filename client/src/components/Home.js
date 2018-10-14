@@ -6,7 +6,7 @@ import VaultList from './Lists/VaultList';
 const Home = () => {
 
     return (
-        <Container className='jumbotron'>
+        <Container>
             <VaultList />
         </Container>
     );

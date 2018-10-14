@@ -9,19 +9,19 @@ import { setHeaders } from '../../actions/headers';
 import { setFlash } from '../../actions/flash';
 
 
-class Guide extends Component {
+class AreaGuide extends Component {
 
     componentDidMount() {
         const { dispatch, match } = this.props;
 
         axios.get(`/api/areas/${match.params.id}`)
         .then( res => {
-            dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data.walls })
             dispatch({ type: 'GET_ACTIVE_SELECTION', payload: res.data.area })
+            dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data.walls })
             dispatch(setHeaders(res.headers));
         })
         .catch( err => {
-            dispatch(setFlash('Failed to get area information', 'red'));
+            dispatch(setFlash('Failed to get area information!', 'red'));
         })
     }
 
@@ -43,4 +43,4 @@ class Guide extends Component {
     }
 }
 
-export default connect()(Guide);
+export default connect()(AreaGuide);
