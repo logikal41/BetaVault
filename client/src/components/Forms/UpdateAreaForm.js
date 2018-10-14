@@ -15,7 +15,7 @@ class UpdateAreaForm extends React.Component {
 
         axios.get(`/api/areas/${id}`)
         .then( res => {
-            initialize(res.data);
+            initialize(res.data.area);
             dispatch(setHeaders(res.headers));
         })
         .catch( err => {

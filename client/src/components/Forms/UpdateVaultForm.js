@@ -38,11 +38,13 @@ class UpdateVaultForm extends Component {
 
     onSubmit = (values) => {
         const { dispatch, history } = this.props;
-        dispatch(updateVault(values, () => history.push('/') ));
+        const { id } = this.props.match.params;
+        dispatch(updateVault(values, () => history.push(`/vault/${id}`) ));
     }
 
     render() {
         const { handleSubmit, history } = this.props;
+        const { id } = this.props.match.params;
 
         return (
             <Container className='make-form-container'>
@@ -59,7 +61,7 @@ class UpdateVaultForm extends Component {
                         component={this.renderField}
                     />
                     <Button color='black' floated='left'>UPDATE VAULT</Button>
-                    <Button color='black' floated='left' basic={true} onClick={() => history.push('/')}>CANCEL</Button>
+                    <Button color='black' floated='left' basic={true} onClick={() => history.push(`/vault/${id}`)}>CANCEL</Button>
                 </Form>
             </Container>
         )

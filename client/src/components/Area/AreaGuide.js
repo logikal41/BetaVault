@@ -16,8 +16,8 @@ class Guide extends Component {
 
         axios.get(`/api/areas/${match.params.id}`)
         .then( res => {
-            // dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data.walls })
-            dispatch({ type: 'GET_ACTIVE_SELECTION', payload: res.data })
+            dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data.walls })
+            dispatch({ type: 'GET_ACTIVE_SELECTION', payload: res.data.area })
             dispatch(setHeaders(res.headers));
         })
         .catch( err => {
