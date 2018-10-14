@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180717013444) do
+ActiveRecord::Schema.define(version: 20181014002340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "areas", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "vault_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vault_id"], name: "index_areas_on_vault_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -52,4 +61,5 @@ ActiveRecord::Schema.define(version: 20180717013444) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "areas", "vaults"
 end

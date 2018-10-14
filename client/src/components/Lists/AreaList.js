@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, Header, Container, Button } from 'semantic-ui-react';
+import { List, Header, Container, Button, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import Map from '../../images/googlemaps.jpg';
@@ -19,7 +19,7 @@ class AreaList extends Component {
     } else {
       return (
         <Container className='list-container'>
-          <Map />
+          <Image src={Map} size='medium' />
           <Button className='list-button-creation' fluid={true} onClick={() => history.push('/area/new')}>Add Area</Button>
           <Header className='list-header' textAlign='left'>AREAS</Header>
           <List>

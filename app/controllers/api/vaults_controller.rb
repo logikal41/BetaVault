@@ -7,9 +7,8 @@ class Api::VaultsController < ApplicationController
 
   def show
     vault = Vault.find(params[:id])
-    # areas = vault.areas.order(id: :asc);
-    # render json: { vault: vault, areas: areas }
-    render json: vault
+    areas = vault.areas.order(id: :asc);
+    render json: { vault: vault, areas: areas }
   end
 
   def update
