@@ -14,6 +14,9 @@ import UpdateVaultForm from './Forms/UpdateVaultForm';
 import NewAreaForm from './Forms/NewAreaForm';
 import AreaGuide from './Area/AreaGuide';
 import UpdateAreaForm from './Forms/UpdateAreaForm';
+import WallGuide from './Wall/WallGuide';
+import UpdateWallForm from './Forms/UpdateWallForm';
+import NewWallForm from './Forms/NewWallForm';
 
 class App extends Component {
 
@@ -32,6 +35,9 @@ class App extends Component {
             <ProtectedRoute exact path='/vault/:id' component={VaultGuide} />
             <ProtectedRoute exact path='/area/update/:id' component={UpdateAreaForm} />
             <ProtectedRoute exact path='/area/:id' component={AreaGuide} />
+            <ProtectedRoute exact path='/wall/update/:id' component={UpdateWallForm} />
+            <ProtectedRoute exact path='/wall/new' component={NewWallForm} />
+            <ProtectedRoute exact path='/wall/:id' component={WallGuide} />
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>
