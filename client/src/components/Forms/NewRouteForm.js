@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Form, Header, Container, Button } from 'semantic-ui-react';
 import { createRoute } from '../../actions/routes';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class NewRouteForm extends React.Component {
 
@@ -20,17 +21,18 @@ class NewRouteForm extends React.Component {
     }
 
     onSubmit = (values) => {
-        const { dispatch, history } = this.props;
+        const { dispatch, history, toggleCreate } = this.props;
         const { id } = this.props.activeSelection;
         dispatch(createRoute( { wall_id: id , ...values }, () => history.push(`/wall/${id}`) ));
+        toggleCreate();
     }
 
     render() {
-        const { handleSubmit, history, activeSelection} = this.props;
+        const { handleSubmit, activeSelection, toggleCreate} = this.props;
 
         return (
             <Container className='make-form-container'>
-                <Header className='details-header' textAlign='left'>New Route Form</Header>
+                <Header className='details-header' textAlign='left'>Create New Route</Header>
                 <Form onSubmit={ handleSubmit(this.onSubmit) }>
                     <Field
                         label='Name of Route'
@@ -72,8 +74,11 @@ class NewRouteForm extends React.Component {
                         name='descent'
                         component={this.renderField}
                     />
-                    <Button color='black' floated='left'>CREATE ROUTE</Button>
-                    <Button color='black' floated='left' basic={true} onClick={() => history.push(`/wall/${activeSelection.id}`)}>CANCEL</Button>
+                    <Button color='black' floated='left' className='welcome-button'>CREATE ROUTE</Button>
+                    <Button color='black' floated='left' basic={true} className='welcome-button'
+                        onClick={() => toggleCreate()}>
+                        CANCEL
+                    </Button>
                 </Form>
             </Container>
         )
@@ -100,7 +105,7 @@ const mapStateToProps = ({ activeSelection }) => {
     return { activeSelection }
 };
 
-export default reduxForm({
+export default withRouter(reduxForm({
     validate,
     form: 'NewRouteForm'
-})(connect(mapStateToProps)(NewRouteForm));
+})(connect(mapStateToProps)(NewRouteForm)));

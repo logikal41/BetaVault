@@ -12,11 +12,13 @@ class AreaList extends Component {
     if ( activeList.length === 0) {
       return (
         <Container className='comments-container'>
-          <Segment basic> 
-            <Dimmer active inverted>
-              <Loader>loading areas...</Loader>
-            </Dimmer>
-          </Segment>
+          <Image src={Map} size='medium' />
+          <Button className='list-button-creation' fluid={true} onClick={() => toggleCreate()}>Add Area</Button>
+            <Segment basic> 
+              <Dimmer active inverted>
+                <Loader>loading areas...</Loader>
+              </Dimmer>
+            </Segment>
         </Container>
       )
     } else {

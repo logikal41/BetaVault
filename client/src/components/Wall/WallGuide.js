@@ -8,10 +8,11 @@ import Comments from './Comments';
 import axios from 'axios';
 import { setHeaders } from '../../actions/headers';
 import { setFlash } from '../../actions/flash';
+import NewRouteForm from '../Forms/NewRouteForm';
 
 
 class Guide extends Component {
-    state={ wall: {}, area_name: '' };
+    state={ wall: {}, area_name: '', create: false };
 
     componentDidMount() {
         const { dispatch, match } = this.props;
@@ -43,9 +44,47 @@ class Guide extends Component {
         dispatch({ type: 'GET_ACTIVE_SELECTION', payload: wall })
     }
 
+    toggleCreate = () => {
+        this.setState({create: !this.state.create})
+    }
+
+    renderComponents = () => {
+        const { area_id, create, wall, area_name } = this.state;
+        const { activeSelection } = this.props;
+
+        // render the new wall form if create is true
+        if ( create ) {
+            return (
+                <Grid.Column width={12}>
+                    <NewRouteForm
+                        area_id= {area_id}
+                        toggleCreate= {this.toggleCreate}
+                    />
+                </Grid.Column>
+            );
+        // otherwise render the area information
+        } else {
+            return (
+                <Grid.Column width={12}>
+                    {activeSelection.wall_id ? 
+                        <RouteDetails 
+                            area_name={area_name} 
+                            area_id={wall.area_id} 
+                            wall_name={wall.name}
+                            toggleWallDetails={this.toggleWallDetails} 
+                        /> 
+                        : 
+                        <WallDetails area_name={area_name} />
+                    }
+                    <Comments />
+                </Grid.Column>
+            )
+        }
+    }
+
     render() {
         const { activeSelection } = this.props;
-        const { area_name, wall } = this.state;
+        const { wall } = this.state;
 
         if (!activeSelection) {
             return <Header as='h1' textAlign='center'>Loading...</Header>
@@ -54,21 +93,12 @@ class Guide extends Component {
         return (
             <Container>
                 <Grid>
-                    <Grid.Column width={12}>
-                        {activeSelection.wall_id ? 
-                            <RouteDetails 
-                                area_name={area_name} 
-                                area_id={wall.area_id} 
-                                wall_name={wall.name}
-                                toggleWallDetails={this.toggleWallDetails} 
-                            /> 
-                            : 
-                            <WallDetails area_name={area_name} />
-                        }
-                        <Comments />
-                    </Grid.Column>
+                    {this.renderComponents()}
                     <Grid.Column width={4}>
-                        <RouteList wall={wall} />
+                        <RouteList 
+                            wall={wall}
+                            toggleCreate={this.toggleCreate}
+                        />
                     </Grid.Column>
                 </Grid>
             </Container>

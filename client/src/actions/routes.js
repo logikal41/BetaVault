@@ -30,11 +30,13 @@ export const createRoute = (values, callBack) => {
   return dispatch => {
   axios.post('/api/routes', values )
     .then( res => {
+      dispatch({ type: 'ADJOIN_ACTIVE_LIST', payload: res.data  })
       dispatch(setHeaders(res.headers));
     })
     .then( () => callBack() )
     .catch( err => {
-      dispatch(setFlash('Failed to create route', 'red'));
+      dispatch(setFlash('Failed to create route!', 'red'));
+      callBack();
     })  
   } 
 }

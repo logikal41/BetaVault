@@ -48,7 +48,7 @@ class UpdateVaultForm extends Component {
 
         return (
             <Container className='make-form-container'>
-                <Header className='details-header' textAlign='left'>Update Vault</Header>
+                <Header className='details-header' textAlign='left'>Update Vault Details</Header>
                 <Form onSubmit={ handleSubmit(this.onSubmit) }>
                     <Field
                         label='NAME OF VAULT'

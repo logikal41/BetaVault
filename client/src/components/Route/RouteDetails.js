@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { List, Header, Container, Button } from 'semantic-ui-react';
+import { List, Header, Container, Button, Image } from 'semantic-ui-react';
 import { deleteRoute } from '../../actions/routes';
 import { Link, withRouter } from 'react-router-dom';
+import ClimbingRoute from '../../images/climbing route.jpeg';
 
 class RouteDetails extends Component {
 
@@ -37,11 +38,11 @@ class RouteDetails extends Component {
             <Container className='comments-container'>
 
                 <Header className='details-header'> {activeSelection.name} 
-                    <Button floated='right' basic={true} 
+                    <Button floated='right' negative 
                         onClick={() => this.removeRoute(activeSelection.id)}>
                         Delete
                     </Button>
-                    <Button floated='right' basic={true}
+                    <Button floated='right' basic={true} color='black'
                         onClick={() => history.push(`/route/update/${activeSelection.id}`)}>
                         Update
                     </Button> 
@@ -51,17 +52,19 @@ class RouteDetails extends Component {
                     {this.renderNavLinks()}
                 </Container>
 
-                <Container>  
-                    <List>
-                        <List.Item>Difficulty: {activeSelection.difficulty}</List.Item>
-                        <List.Item>Pitch Count: {activeSelection.pitch}</List.Item>
-                        <List.Item>Route length: {activeSelection.length}</List.Item>
-                        <List.Item>First Ascent: {activeSelection.first_ascent}</List.Item>
-                        <List.Item>Description: {activeSelection.description}</List.Item>
-                        <List.Item>Required Gear: {activeSelection.gear}</List.Item>
-                        <List.Item>Descent: {activeSelection.descent}</List.Item>
-                    </List>
-                </Container>
+                <div>
+                    <Image centered={true} src={ClimbingRoute} />
+                </div>
+
+                <List>
+                    <List.Item>Difficulty: {activeSelection.difficulty}</List.Item>
+                    <List.Item>Pitch Count: {activeSelection.pitch}</List.Item>
+                    <List.Item>Route length: {activeSelection.length}</List.Item>
+                    <List.Item>First Ascent: {activeSelection.first_ascent}</List.Item>
+                    <List.Item>Description: {activeSelection.description}</List.Item>
+                    <List.Item>Required Gear: {activeSelection.gear}</List.Item>
+                    <List.Item>Descent: {activeSelection.descent}</List.Item>
+                </List>
             </Container>
         )
     }

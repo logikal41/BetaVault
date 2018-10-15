@@ -51,7 +51,7 @@ class UpdateRouteForm extends React.Component {
 
         return (
             <Container className='make-form-container'>
-                <Header className='details-header' textAlign='left'>New Route Form</Header>
+                <Header className='details-header' textAlign='left'>Update Route Details</Header>
                 <Form onSubmit={ handleSubmit(this.onSubmit) }>
                     <Field
                         label='Name of Route'
@@ -93,8 +93,11 @@ class UpdateRouteForm extends React.Component {
                         name='descent'
                         component={this.renderField}
                     />
-                    <Form.Button positive>UPDATE ROUTE</Form.Button>
-                    <Button negative onClick={() => history.push(`/wall/${wall_id}`)}>CANCEL</Button>
+                    <Button color='black' floated='left' className='welcome-button'>UPDATE ROUTE</Button>
+                    <Button color='black' floated='left' basic={true} className='welcome-button'
+                        onClick={() => history.push(`/wall/${wall_id}`)}>
+                        CANCEL
+                    </Button>
                 </Form>
             </Container>
         )

@@ -48,7 +48,7 @@ class UpdateAreaForm extends React.Component {
 
         return (
             <Container className='make-form-container'>
-                <Header className='details-header' textAlign='left'>Update Area</Header>
+                <Header className='details-header' textAlign='left'>Update Area Details</Header>
                 <Form onSubmit={ handleSubmit(this.onSubmit) }>
                     <Field
                         label='NAME OF AREA'
@@ -60,8 +60,11 @@ class UpdateAreaForm extends React.Component {
                         name='description'
                         component={this.renderField}
                     />
-                    <Button color='black' floated='left'>UPDATE AREA</Button>
-                    <Button color='black' floated='left' basic={true} onClick={() => history.push(`/area/${id}`)}>CANCEL</Button>
+                    <Button color='black' floated='left' className='welcome-button'>UPDATE AREA</Button>
+                    <Button color='black' floated='left' basic={true} className='welcome-button'
+                        onClick={() => history.push(`/area/${id}`)}>
+                        CANCEL
+                    </Button>
                 </Form>
             </Container>
         )

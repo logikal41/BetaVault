@@ -12,11 +12,13 @@ class WallList extends Component {
     if ( activeList.length === 0) {
       return (
         <Container className='comments-container'>
-          <Segment basic> 
-            <Dimmer active inverted>
-              <Loader>loading walls...</Loader>
-            </Dimmer>
-          </Segment>
+          <Image src={Map} size='medium' />
+          <Button className='list-button-creation' fluid={true} onClick={() => toggleCreate()}>Add Wall</Button>
+            <Segment basic> 
+              <Dimmer active inverted>
+                <Loader>loading walls...</Loader>
+              </Dimmer>
+            </Segment>
         </Container>
       )
     } else {

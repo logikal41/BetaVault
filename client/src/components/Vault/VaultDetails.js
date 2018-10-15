@@ -25,10 +25,14 @@ class GroupDetails extends Component {
         return (
             <Container className='comments-container'>
                 <Header className='details-header'> {activeSelection.name}
-                    <Button negative floated='right' onClick={() => dispatch(deleteVault(activeSelection.id, () => history.push('/')))}>
+                    <Button negative floated='right' 
+                        onClick={() => dispatch(deleteVault(activeSelection.id, () => history.push('/')))}>
                         Delete
                     </Button>
-                    <Button floated='right' basic={true} color='black' onClick={() => history.push(`/vault/update/${activeSelection.id}`)}>Update</Button>
+                    <Button floated='right' basic={true} color='black' 
+                        onClick={() => history.push(`/vault/update/${activeSelection.id}`)}>
+                        Update
+                    </Button>
                 </Header>
                 <div>
                     <Image centered={true} src={MesaArch} />

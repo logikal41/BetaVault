@@ -15,11 +15,11 @@ class UpdateWallForm extends React.Component {
 
         axios.get(`/api/walls/${id}`)
         .then( res => {
-            initialize(res.data);
+            initialize(res.data.wall);
             dispatch(setHeaders(res.headers));
         })
         .catch( err => {
-            dispatch(setFlash('Failed to get wall', 'red'));
+            dispatch(setFlash('Failed to get wall information!', 'red'));
         })
     }
 
@@ -48,7 +48,7 @@ class UpdateWallForm extends React.Component {
 
         return (
             <Container className='make-form-container'>
-                <Header className='details-header' textAlign='left'>Update Wall Form</Header>
+                <Header className='details-header' textAlign='left'>Update Wall Details</Header>
                 <Form onSubmit={ handleSubmit(this.onSubmit) }>
                     <Field
                         label='NAME OF WALL'
@@ -60,8 +60,11 @@ class UpdateWallForm extends React.Component {
                         name='description'
                         component={this.renderField}
                     />
-                    <Form.Button positive>UPDATE WALL</Form.Button>
-                    <Button negative onClick={() => history.push(`/wall/${id}`)}>CANCEL</Button>
+                    <Button color='black' floated='left' className='welcome-button'>UPDATE WALL</Button>
+                    <Button color='black' floated='left' basic={true} className='welcome-button'
+                        onClick={() => history.push(`/wall/${id}`)}>
+                        CANCEL
+                    </Button>
                 </Form>
             </Container>
         )

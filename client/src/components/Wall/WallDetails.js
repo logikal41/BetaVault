@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Container, Header, Button, Image } from 'semantic-ui-react';
+import { Container, Header, Button, Image, Segment, Dimmer, Loader } from 'semantic-ui-react';
 import { deleteWall } from '../../actions/walls';
 import MesaArch from '../../images/mesa arch.jpg';
 
@@ -23,18 +23,27 @@ class WallDetails extends Component {
         const { dispatch, history, activeSelection } = this.props;
 
         if ( !activeSelection ) {
-            return <div> Loading... </div>
+            <Container className='comments-container'>
+                <Segment basic> 
+                    <Dimmer active inverted>
+                        <Loader>loading wall details...</Loader>
+                    </Dimmer>
+                </Segment>
+            </Container>
         }
 
         return (
             <Container className='comments-container'>
 
                 <Header className='details-header'> {activeSelection.name} 
-                    <Button floated='right' basic={true} 
+                    <Button floated='right' negative 
                         onClick={() => dispatch(deleteWall(activeSelection.id, () => history.push(`/area/${activeSelection.area_id}`)))}> 
                         Delete 
                     </Button>
-                    <Button floated='right' basic={true} onClick={() => history.push(`/wall/update/${activeSelection.id}`)}>Update</Button>
+                    <Button floated='right' basic={true} color='black' 
+                        onClick={() => history.push(`/wall/update/${activeSelection.id}`)}>
+                        Update
+                    </Button>
                 </Header>
                 
                 <Container className='black-container'>
@@ -45,11 +54,8 @@ class WallDetails extends Component {
                     <Image centered={true} src={MesaArch} />
                 </div>
                 
-
-                <Container>
-                    <Header className='description-header'>DESCRIPTION</Header>
-                    <Header className='description-body'>{activeSelection.description} </Header>
-                </Container>
+                <Header className='description-header'>DESCRIPTION</Header>
+                <Header className='description-body'>{activeSelection.description} </Header>
             </Container>
             
         )

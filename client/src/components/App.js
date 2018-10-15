@@ -15,7 +15,6 @@ import AreaGuide from './Area/AreaGuide';
 import UpdateAreaForm from './Forms/UpdateAreaForm';
 import WallGuide from './Wall/WallGuide';
 import UpdateWallForm from './Forms/UpdateWallForm';
-import NewRouteForm from './Forms/NewRouteForm';
 import UpdateRouteForm from './Forms/UpdateRouteForm';
 
 class App extends Component {
@@ -36,7 +35,6 @@ class App extends Component {
             <ProtectedRoute exact path='/area/:id' component={AreaGuide} />
             <ProtectedRoute exact path='/wall/update/:id' component={UpdateWallForm} />
             <ProtectedRoute exact path='/wall/:id' component={WallGuide} />
-            <ProtectedRoute exact path='/route/new' component={NewRouteForm} />
             <ProtectedRoute exact path='/route/update/:id' component={UpdateRouteForm} />
             <Route component={NoMatch} />
           </Switch>
