@@ -1,9 +1,9 @@
-import { GET_ACTIVE_LIST } from '../actions/vaults';
+import { SET_ACTIVE_LIST } from '../actions/vaults';
 import { DELETE_ROUTE } from '../actions/routes';
 
 const activeList = (state = [], action) => {
     switch (action.type) {
-      case GET_ACTIVE_LIST:
+      case SET_ACTIVE_LIST:
         return action.payload;
       case DELETE_ROUTE:
         return state.filter( route => route.id !== action.payload );

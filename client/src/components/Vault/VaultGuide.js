@@ -11,7 +11,7 @@ import { setFlash } from '../../actions/flash';
 
 
 class VaultGuide extends Component {
-    state = { vault_id: '', create: false };
+    state = { create: false };
 
     // Get all the areas within this vault
     componentDidMount() {
@@ -19,9 +19,8 @@ class VaultGuide extends Component {
 
         axios.get(`/api/vaults/${match.params.id}`)
         .then( res => {
-            dispatch({ type: 'GET_ACTIVE_SELECTION', payload: res.data.vault })
-            dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data.areas })
-            this.setState({ vault_id: res.data.vault.id })
+            dispatch({ type: 'SET_ACTIVE_SELECTION', payload: res.data.vault })
+            dispatch({ type: 'SET_ACTIVE_LIST', payload: res.data.areas })
             dispatch(setHeaders(res.headers));
         })
         .catch( err => {
@@ -36,14 +35,15 @@ class VaultGuide extends Component {
     }
 
     renderComponents = () => {
-        const { vault_id, create } = this.state;
+        const { create } = this.state;
+        const { id } = this.props.activeSelection;
 
         // render the new area form if create is true
         if ( create ) {
             return (
                 <Grid.Column width={12}>
                     <NewAreaForm
-                        vault_id= {vault_id}
+                        vault_id= {id}
                         toggleCreate= {this.toggleCreate}
                     />
                 </Grid.Column>
@@ -76,4 +76,8 @@ class VaultGuide extends Component {
     }
 }
 
-export default connect()(VaultGuide);
+const mapStateToProps = ({ activeSelection }) => {
+    return {activeSelection}
+}
+
+export default connect(mapStateToProps)(VaultGuide);

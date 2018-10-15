@@ -22,8 +22,8 @@ export const getWall = id => {
   return dispatch => {
     axios.get(`/api/walls/${id}`)
     .then( res => {
-      dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data.routes })
-      dispatch({ type: 'GET_ACTIVE_SELECTION', payload: res.data.wall })
+      dispatch({ type: 'SET_ACTIVE_LIST', payload: res.data.routes })
+      dispatch({ type: 'SET_ACTIVE_SELECTION', payload: res.data.wall })
       dispatch(setHeaders(res.headers));
     })
     .catch( err => {

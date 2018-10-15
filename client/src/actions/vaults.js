@@ -2,8 +2,8 @@ import axios from 'axios';
 import { setHeaders } from './headers';
 import { setFlash } from './flash';
 
-export const GET_ACTIVE_LIST = 'GET_ACTIVE_LIST';
-export const GET_ACTIVE_SELECTION = 'GET_ACTIVE_SELECTION';
+export const SET_ACTIVE_LIST = 'SET_ACTIVE_LIST';
+export const SET_ACTIVE_SELECTION = 'SET_ACTIVE_SELECTION';
 
 
   export const updateVault = (vault, callBack) => {

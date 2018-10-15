@@ -16,8 +16,8 @@ class VaultList extends Component {
         axios.get('/api/vaults')
         .then( res => {
           // clear out the active selection every time you go to the vault list
-          dispatch({ type: 'GET_ACTIVE_SELECTION', payload: {} });
-          dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data });
+          dispatch({ type: 'SET_ACTIVE_SELECTION', payload: {} });
+          dispatch({ type: 'SET_ACTIVE_LIST', payload: res.data });
           dispatch(setHeaders(res.headers));
         })
         .catch( err => {

@@ -8,7 +8,7 @@ class RouteList extends Component {
 
   createRoute = () => {
     const { wall, dispatch } = this.props;
-    dispatch({ type: 'GET_ACTIVE_SELECTION', payload: wall });
+    dispatch({ type: 'SET_ACTIVE_SELECTION', payload: wall });
   }
 
   render() {
@@ -38,7 +38,7 @@ class RouteList extends Component {
                 <List.Item
                   className='guide-list route-list' 
                   key={route.id} 
-                  onClick={() => this.props.dispatch({ type: 'GET_ACTIVE_SELECTION', payload: route })}
+                  onClick={() => this.props.dispatch({ type: 'SET_ACTIVE_SELECTION', payload: route })}
                   >
                 {route.name}
                 </List.Item>

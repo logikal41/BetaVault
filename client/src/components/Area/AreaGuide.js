@@ -11,16 +11,15 @@ import NewWallForm from '../Forms/NewWallForm';
 
 
 class AreaGuide extends Component {
-    state = { area_id: '', create: false };
+    state = { create: false };
 
     componentDidMount() {
         const { dispatch, match } = this.props;
 
         axios.get(`/api/areas/${match.params.id}`)
         .then( res => {
-            dispatch({ type: 'GET_ACTIVE_SELECTION', payload: res.data.area })
-            dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data.walls })
-            this.setState({ area_id: res.data.area.id })
+            dispatch({ type: 'SET_ACTIVE_SELECTION', payload: res.data.area })
+            dispatch({ type: 'SET_ACTIVE_LIST', payload: res.data.walls })
             dispatch(setHeaders(res.headers));
         })
         .catch( err => {
@@ -33,14 +32,15 @@ class AreaGuide extends Component {
     }
 
     renderComponents = () => {
-        const { area_id, create } = this.state;
+        const { create } = this.state;
+        const { id } = this.props.activeSelection;
 
         // render the new wall form if create is true
         if ( create ) {
             return (
                 <Grid.Column width={12}>
                     <NewWallForm
-                        area_id= {area_id}
+                        area_id= {id}
                         toggleCreate= {this.toggleCreate}
                     />
                 </Grid.Column>
@@ -73,4 +73,8 @@ class AreaGuide extends Component {
     }
 }
 
-export default connect()(AreaGuide);
+const mapStateToProps = ({ activeSelection }) => {
+    return {activeSelection}
+}
+
+export default connect(mapStateToProps)(AreaGuide);

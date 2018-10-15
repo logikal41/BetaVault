@@ -19,8 +19,8 @@ export const getArea = id => {
   return dispatch => {
     axios.get(`/api/areas/${id}`)
     .then( res => {
-      dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data.walls })
-      dispatch({ type: 'GET_ACTIVE_SELECTION', payload: res.data.area })
+      dispatch({ type: 'SET_ACTIVE_LIST', payload: res.data.walls })
+      dispatch({ type: 'SET_ACTIVE_SELECTION', payload: res.data.area })
       dispatch(setHeaders(res.headers));
     })
     .catch( err => {

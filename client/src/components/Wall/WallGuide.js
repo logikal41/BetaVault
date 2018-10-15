@@ -19,8 +19,8 @@ class Guide extends Component {
 
         axios.get(`/api/walls/${match.params.id}`)
         .then( res => {
-            dispatch({ type: 'GET_ACTIVE_SELECTION', payload: res.data.wall })
-            dispatch({ type: 'GET_ACTIVE_LIST', payload: res.data.routes })
+            dispatch({ type: 'SET_ACTIVE_SELECTION', payload: res.data.wall })
+            dispatch({ type: 'SET_ACTIVE_LIST', payload: res.data.routes })
             this.setState({ wall: res.data.wall })
             
             axios.get(`/api/areaname/${res.data.wall.area_id}`)
@@ -41,7 +41,7 @@ class Guide extends Component {
     toggleWallDetails = () => {
         const { dispatch } = this.props;
         const { wall } = this.state;
-        dispatch({ type: 'GET_ACTIVE_SELECTION', payload: wall })
+        dispatch({ type: 'SET_ACTIVE_SELECTION', payload: wall })
     }
 
     toggleCreate = () => {
