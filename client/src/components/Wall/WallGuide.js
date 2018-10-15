@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Grid, Header } from 'semantic-ui-react';
+import { Container, Grid, Segment, Dimmer, Loader } from 'semantic-ui-react';
 import RouteList from '../Lists/RouteList';
 import WallDetails from './WallDetails';
 import RouteDetails from '../Route/RouteDetails';
@@ -87,7 +87,15 @@ class Guide extends Component {
         const { wall } = this.state;
 
         if (!activeSelection) {
-            return <Header as='h1' textAlign='center'>Loading...</Header>
+            return ( 
+                <Container className='comments-container'>
+                    <Segment basic> 
+                        <Dimmer active inverted>
+                            <Loader>loading details...</Loader>
+                        </Dimmer>
+                    </Segment>
+                </Container>
+            )
         }
       
         return (
