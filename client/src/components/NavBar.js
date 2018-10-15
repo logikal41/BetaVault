@@ -15,7 +15,7 @@ class NavBar extends Component {
         <div>
             <Menu inverted={true} borderless={true}>
               <Link to='/'>
-                <Image src={BetaVaultWord} className='welcome-button' size='small' inline={true} spaced='left' />
+                <Image src={BetaVaultWord} className='navbar-logo' size='small' inline={true} />
               </Link>
               <Menu.Menu position='right'>
                 <Menu.Item

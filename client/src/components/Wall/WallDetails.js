@@ -23,13 +23,15 @@ class WallDetails extends Component {
         const { dispatch, history, activeSelection } = this.props;
 
         if ( !activeSelection ) {
-            <Container className='comments-container'>
-                <Segment basic> 
-                    <Dimmer active inverted>
-                        <Loader>loading wall details...</Loader>
-                    </Dimmer>
-                </Segment>
-            </Container>
+            return (
+                <Container className='comments-container'>
+                    <Segment basic> 
+                        <Dimmer active inverted>
+                            <Loader>loading wall details...</Loader>
+                        </Dimmer>
+                    </Segment>
+                </Container>
+            )
         }
 
         return (

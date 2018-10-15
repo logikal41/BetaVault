@@ -149,3 +149,8 @@
 .welcome-button {
     margin-top: 5px !important;
 }
+
+.navbar-logo {
+    margin-left: 1em;
+    margin-top: 5px;
+}

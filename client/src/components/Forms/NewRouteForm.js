@@ -9,7 +9,7 @@ class NewRouteForm extends React.Component {
 
     renderField = (field) => {
         return (
-            <Container>
+            <Container className='field-styling'>
                 <label>{field.label}</label>
                 <Form.Input
                     type='text' 
@@ -28,7 +28,7 @@ class NewRouteForm extends React.Component {
     }
 
     render() {
-        const { handleSubmit, activeSelection, toggleCreate} = this.props;
+        const { handleSubmit, toggleCreate} = this.props;
 
         return (
             <Container className='make-form-container'>
@@ -74,8 +74,8 @@ class NewRouteForm extends React.Component {
                         name='descent'
                         component={this.renderField}
                     />
-                    <Button color='black' floated='left' className='welcome-button'>CREATE ROUTE</Button>
-                    <Button color='black' floated='left' basic={true} className='welcome-button'
+                    <Button color='black' floated='left'>CREATE ROUTE</Button>
+                    <Button color='black' floated='left' basic={true}
                         onClick={() => toggleCreate()}>
                         CANCEL
                     </Button>

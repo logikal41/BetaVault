@@ -27,7 +27,7 @@ class UpdateRouteForm extends React.Component {
 
     renderField = (field) => {
         return (
-            <Container>
+            <Container className='field-styling'>
                 <label>{field.label}</label>
                 <Form.Input
                     type='text' 
@@ -93,8 +93,8 @@ class UpdateRouteForm extends React.Component {
                         name='descent'
                         component={this.renderField}
                     />
-                    <Button color='black' floated='left' className='welcome-button'>UPDATE ROUTE</Button>
-                    <Button color='black' floated='left' basic={true} className='welcome-button'
+                    <Button color='black' floated='left'>UPDATE ROUTE</Button>
+                    <Button color='black' floated='left' basic={true}
                         onClick={() => history.push(`/wall/${wall_id}`)}>
                         CANCEL
                     </Button>

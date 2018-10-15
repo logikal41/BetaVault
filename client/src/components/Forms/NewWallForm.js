@@ -9,7 +9,7 @@ class NewWallForm extends React.Component {
 
     renderField = (field) => {
         return (
-            <Container>
+            <Container className='field-styling'>
                 <label>{field.label}</label>
                 <Form.Input
                     type='text'
@@ -47,8 +47,11 @@ class NewWallForm extends React.Component {
                         component={this.renderField}
                         placeholder='description'
                     />
-                    <Button color='black' floated='left' className='welcome-button'>CREATE WALL</Button>
-                    <Button color='black' floated='left' basic={true} className='welcome-button' onClick={() => toggleCreate()}>CANCEL</Button>
+                    <Button color='black' floated='left'>CREATE WALL</Button>
+                    <Button color='black' floated='left' basic={true} 
+                        onClick={() => toggleCreate()}>
+                        CANCEL
+                    </Button>
                 </Form>
             </Container>
         )

@@ -44,11 +44,11 @@ class NewVaultForm extends React.Component {
                         component={this.renderField}
                         placeholder='description'
                     />
-                    
-                    <div>
-                        <Button color='black' floated='left'>CREATE VAULT</Button>
-                        <Button color='black' floated='left' basic={true} onClick={() => history.push('/')}>CANCEL</Button>
-                    </div>
+                    <Button color='black' floated='left'>CREATE VAULT</Button>
+                    <Button color='black' floated='left' basic={true} 
+                        onClick={() => history.push('/')}>
+                        CANCEL
+                    </Button>
                 </Form>
             </Container>
         )

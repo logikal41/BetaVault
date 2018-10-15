@@ -25,7 +25,7 @@ class UpdateWallForm extends React.Component {
 
     renderField = (field) => {
         return (
-            <Container>
+            <Container className='field-styling'>
                 <label>{field.label}</label>
                 <Form.Input
                     type='text'
@@ -60,8 +60,8 @@ class UpdateWallForm extends React.Component {
                         name='description'
                         component={this.renderField}
                     />
-                    <Button color='black' floated='left' className='welcome-button'>UPDATE WALL</Button>
-                    <Button color='black' floated='left' basic={true} className='welcome-button'
+                    <Button color='black' floated='left'>UPDATE WALL</Button>
+                    <Button color='black' floated='left' basic={true}
                         onClick={() => history.push(`/wall/${id}`)}>
                         CANCEL
                     </Button>

@@ -25,7 +25,7 @@ class UpdateVaultForm extends Component {
 
     renderField = (field) => {
         return (
-            <Container>
+            <Container className='field-styling'>
                 <label>{field.label}</label>
                 <Form.Input
                     type='text'
@@ -60,8 +60,11 @@ class UpdateVaultForm extends Component {
                         name='description'
                         component={this.renderField}
                     />
-                    <Button color='black' floated='left' className='welcome-button'>UPDATE VAULT</Button>
-                    <Button color='black' floated='left' basic={true} className='welcome-button' onClick={() => history.push(`/vault/${id}`)}>CANCEL</Button>
+                    <Button color='black' floated='left'>UPDATE VAULT</Button>
+                    <Button color='black' floated='left' basic={true} 
+                        onClick={() => history.push(`/vault/${id}`)}>
+                        CANCEL
+                    </Button>
                 </Form>
             </Container>
         )

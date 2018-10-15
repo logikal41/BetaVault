@@ -49,11 +49,11 @@ class NewAreaForm extends React.Component {
                         component={this.renderField}
                         placeholder='description'
                     />
-                    
-                    <div>
-                        <Button color='black' floated='left'>CREATE AREA</Button>
-                        <Button color='black' floated='left' basic={true} onClick={() => toggleCreate()}>CANCEL</Button>
-                    </div>
+                    <Button color='black' floated='left'>CREATE AREA</Button>
+                    <Button color='black' floated='left' basic={true} 
+                        onClick={() => toggleCreate()}>
+                        CANCEL
+                    </Button>
                 </Form>
             </Container>
         )
