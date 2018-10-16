@@ -24,6 +24,7 @@ export const SET_ACTIVE_SELECTION = 'SET_ACTIVE_SELECTION';
     axios.post('/api/vaults', values )
       .then( res => {
         dispatch(setHeaders(res.headers));
+        dispatch(setFlash('Vault has been created.', 'green'))
       })
       .then( () => callBack() )
       .catch( err => {
