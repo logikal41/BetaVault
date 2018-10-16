@@ -26,7 +26,7 @@ class Api::VaultsController < ApplicationController
     if vault.save
         render json: vault
     else
-        render json: {errors: vault.errors}, status: :unprocessable_entity
+        render json: { errors: vault.errors }, status: :unprocessable_entity
     end
   end
 
