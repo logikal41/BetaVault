@@ -4,7 +4,6 @@ import { Container, Grid } from 'semantic-ui-react';
 import AreaList from '../Lists/AreaList';
 import VaultDetails from './VaultDetails';
 import NewAreaForm from '../Forms/NewAreaForm';
-import UpdateVault from '../Forms/UpdateVaultForm'
 import Comments from './Comments';
 import axios from 'axios';
 import { setHeaders } from '../../actions/headers';
@@ -12,7 +11,7 @@ import { setFlash } from '../../actions/flash';
 
 
 class VaultGuide extends Component {
-    state = { create: false, update: false };
+    state = { create: false };
 
     // Get all the areas within this vault
     componentDidMount() {
@@ -34,11 +33,7 @@ class VaultGuide extends Component {
     toggleCreate = () => {
         this.setState({create: !this.state.create})
     }
-
-    toggleUpdate = () => {
-        this.setState({update: !this.state.update})
-    }
-
+    
     renderComponents = () => {
         const { create } = this.state;
         const { id } = this.props.activeSelection;
