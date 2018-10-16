@@ -8,7 +8,7 @@ import MesaArch from '../../images/mesa arch.jpg';
 class AreaDetails extends Component {
 
     render() {
-        const { dispatch, history, activeSelection } = this.props;
+        const { dispatch, history, activeSelection, vault_name } = this.props;
 
         if (!activeSelection) {
             return (
@@ -37,7 +37,7 @@ class AreaDetails extends Component {
                 </Header>
 
                 <Container className='black-container'>
-                    <Link className='nav-text-color-selected' to={`/vault/${activeSelection.vault_id}`}>NAME OF VAULT</Link>
+                    <Link className='nav-text-color-selected' to={`/vault/${activeSelection.vault_id}`}>{vault_name}</Link>
                 </Container>
 
                 <div>

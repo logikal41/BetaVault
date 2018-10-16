@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     resources :areas
     resources :walls
     resources :routes
-    get 'areaname/:id', to:'areas#areaname'
+    get 'areainfo/:id', to:'areas#areainfo'
+    get 'vaultname/:id', to:'vaults#vaultname'
   end
 
   #Do not place any routes below this one

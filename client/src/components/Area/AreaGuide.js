@@ -11,7 +11,7 @@ import NewWallForm from '../Forms/NewWallForm';
 
 
 class AreaGuide extends Component {
-    state = { create: false };
+    state = { create: false, vault_name: '' };
 
     componentDidMount() {
         const { dispatch, match } = this.props;
@@ -20,6 +20,15 @@ class AreaGuide extends Component {
         .then( res => {
             dispatch({ type: 'SET_ACTIVE_SELECTION', payload: res.data.area })
             dispatch({ type: 'SET_ACTIVE_LIST', payload: res.data.walls })
+
+            axios.get(`/api/vaultname/${res.data.area.vault_id}`)
+            .then( res => {
+                this.setState({ vault_name: res.data });
+            })
+            .catch( err => {
+                dispatch(setFlash('Failed to get the vault name', 'red'));
+            })
+
             dispatch(setHeaders(res.headers));
         })
         .catch( err => {
@@ -32,7 +41,7 @@ class AreaGuide extends Component {
     }
 
     renderComponents = () => {
-        const { create } = this.state;
+        const { create, vault_name } = this.state;
         const { id } = this.props.activeSelection;
 
         // render the new wall form if create is true
@@ -49,7 +58,9 @@ class AreaGuide extends Component {
         } else {
             return (
                 <Grid.Column width={12}>
-                    <AreaDetails />
+                    <AreaDetails 
+                        vault_name={vault_name}
+                    />
                     <Comments />
                 </Grid.Column>
             )

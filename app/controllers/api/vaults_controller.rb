@@ -11,6 +11,10 @@ class Api::VaultsController < ApplicationController
     render json: { vault: vault, areas: areas }
   end
 
+  def vaultname
+    render json: Vault.find(params[:id]).name
+  end
+
   def update
     vault = Vault.find(params[:id])
     vault.update(vault_params)

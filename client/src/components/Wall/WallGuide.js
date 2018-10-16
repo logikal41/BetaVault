@@ -12,7 +12,7 @@ import NewRouteForm from '../Forms/NewRouteForm';
 
 
 class Guide extends Component {
-    state={ wall: {}, area_name: '', create: false };
+    state={ wall: {}, area_name: '', vault_name: '', vault_id: null, create: false };
 
     componentDidMount() {
         const { dispatch, match } = this.props;
@@ -23,9 +23,20 @@ class Guide extends Component {
             dispatch({ type: 'SET_ACTIVE_LIST', payload: res.data.routes })
             this.setState({ wall: res.data.wall })
             
-            axios.get(`/api/areaname/${res.data.wall.area_id}`)
+            axios.get(`/api/areainfo/${res.data.wall.area_id}`)
             .then( res => {
-                this.setState({ area_name: res.data });
+                this.setState({ area_name: res.data.area_name });
+                this.setState({ vault_id: res.data.vault_id })
+
+                axios.get(`/api/vaultname/${res.data.vault_id}`)
+                .then( res => {
+                    this.setState({ vault_name: res.data });
+                })
+                .catch( err => {
+                    dispatch(setFlash('Failed to get the vault name', 'red'));
+                })
+
+
             })
             .catch( err => {
                 dispatch(setFlash('Failed to get the area name', 'red'));
@@ -49,7 +60,7 @@ class Guide extends Component {
     }
 
     renderComponents = () => {
-        const { area_id, create, wall, area_name } = this.state;
+        const { area_id, create, wall, area_name, vault_id, vault_name } = this.state;
         const { activeSelection } = this.props;
 
         // render the new wall form if create is true
@@ -68,13 +79,19 @@ class Guide extends Component {
                 <Grid.Column width={12}>
                     {activeSelection.wall_id ? 
                         <RouteDetails 
-                            area_name={area_name} 
+                            area_name={area_name}
+                            vault_id={vault_id}
+                            vault_name={vault_name}
                             area_id={wall.area_id} 
                             wall_name={wall.name}
                             toggleWallDetails={this.toggleWallDetails} 
                         /> 
                         : 
-                        <WallDetails area_name={area_name} />
+                        <WallDetails 
+                            area_name={area_name}
+                            vault_id={vault_id}
+                            vault_name={vault_name} 
+                        />
                     }
                     <Comments />
                 </Grid.Column>

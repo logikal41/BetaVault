@@ -15,11 +15,12 @@ class RouteDetails extends Component {
 
 
     renderNavLinks = () => {
-        const { activeSelection, area_name, area_id, wall_name, toggleWallDetails } = this.props;
+        const { activeSelection, area_name, area_id, wall_name, vault_id, vault_name, toggleWallDetails } = this.props;
      
         return (
             <Container>
-                <Link className='nav-text-color' to='/guide'>San Rafael Swell - North > </Link>
+                <Link className='nav-text-color' to={`/vault/${vault_id}`}>
+                    {vault_name} > </Link>
                 <Link className='nav-text-color' to={`/area/${area_id}`}>
                     {area_name} > </Link> 
                 <Link className='nav-text-color-selected' to={`/wall/${activeSelection.wall_id}`} 
