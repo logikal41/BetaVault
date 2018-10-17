@@ -10,8 +10,11 @@ class Api::RoutesController < ApplicationController
   
     def update
         route = Route.find(params[:id])
-        route.update(route_params)
-        render json: route
+        if route.update(route_params)
+            render json: route
+        else
+            render json: { errors: route.errors }, status: :unprocessable_entity
+        end
     end
   
     def create
@@ -19,7 +22,7 @@ class Api::RoutesController < ApplicationController
         if route.save
             render json: route
         else
-            render json: {errors: area.errors}, status: :unprocessable_entity
+            render json: {errors: route.errors}, status: :unprocessable_entity
         end
     end
   

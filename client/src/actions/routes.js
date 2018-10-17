@@ -35,7 +35,14 @@ export const createRoute = (values, callBack) => {
     })
     .then( () => callBack() )
     .catch( err => {
-      dispatch(setFlash('Failed to create route!', 'red'));
+
+      // loop over all the errors and add to the flash message
+      let errorMessages = ['Failed to create route! '];
+      for ( let key in err.response.data.errors ) {
+        errorMessages.push(key + ' ' + err.response.data.errors[key])
+      }
+
+      dispatch(setFlash(errorMessages.join(''), 'red'));
       callBack();
     })  
   } 
@@ -62,7 +69,14 @@ export const updateRoute = (route, callBack) => {
       callBack();
     })
     .catch( err => {
-      dispatch(setFlash('Failed to update route', 'red'));
+
+      // loop over all the errors and add to the flash message
+      let errorMessages = ['Failed to update route! '];
+      for ( let key in err.response.data.errors ) {
+        errorMessages.push(key + ' ' + err.response.data.errors[key])
+      }
+
+      dispatch(setFlash(errorMessages.join(''), 'red'));
     })  
   } 
 }

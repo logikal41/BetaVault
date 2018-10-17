@@ -13,20 +13,19 @@ export const updateVault = (vault, callBack) => {
       callBack();
     })
     .catch( err => {
-      dispatch(setFlash('Failed to update vault details!', 'red'));
+      
+      // loop over all the errors and add to the flash message
+      let errorMessages = ['Failed to update vault! '];
+      for ( let key in err.response.data.errors ) {
+        errorMessages.push(key + ' ' + err.response.data.errors[key])
+      }
+
+      dispatch(setFlash(errorMessages.join(''), 'red'));
     })  
   } 
 }
 
 export const createVault = (values, callBack) => {
-
-  // failedMessage = (errorList) => {
-  //   let messageArray = ['Failed to create vault!']
-  //   for ( const key in errorList ) {
-  //     messageArray.push( key + ' ' + errorList[key]);
-  //   }
-  //   return messageArray.join(' ')
-  // }
 
   return dispatch => {
   axios.post('/api/vaults', values )
@@ -37,11 +36,13 @@ export const createVault = (values, callBack) => {
     .then( () => callBack() )
     .catch( err => {
 
-      // figure out how to loop over the errors object to report any issues and list them 
-      // out in the flash message
-      // can i use the pluaralize code here for error / errors ??
-      const message = 'Failed to create vault! ' + err.response.data.errors.name;
-      dispatch(setFlash(message, 'red'));
+      // loop over all the errors and add to the flash message
+      let errorMessages = ['Failed to create vault! '];
+      for ( let key in err.response.data.errors ) {
+        errorMessages.push(key + ' ' + err.response.data.errors[key])
+      }
+
+      dispatch(setFlash(errorMessages.join(''), 'red'));
 
     })  
   } 

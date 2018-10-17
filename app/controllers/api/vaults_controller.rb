@@ -17,16 +17,19 @@ class Api::VaultsController < ApplicationController
 
   def update
     vault = Vault.find(params[:id])
-    vault.update(vault_params)
-    render json: vault
+    if vault.update(vault_params)
+      render json: vault
+    else
+      render json: { errors: vault.errors }, status: :unprocessable_entity
+    end
   end
 
   def create
     vault = Vault.new(vault_params)
     if vault.save
-        render json: vault
+      render json: vault
     else
-        render json: { errors: vault.errors }, status: :unprocessable_entity
+      render json: { errors: vault.errors }, status: :unprocessable_entity
     end
   end
 

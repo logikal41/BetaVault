@@ -37,7 +37,15 @@ export const updateArea = ({id, name, description}, callBack) => {
       callBack();
     })
     .catch( err => {
-      dispatch(setFlash('Failed to update area', 'red'));
+
+      // loop over all the errors and add to the flash message
+      let errorMessages = ['Failed to update area! '];
+      for ( let key in err.response.data.errors ) {
+        errorMessages.push(key + ' ' + err.response.data.errors[key])
+      }
+
+      dispatch(setFlash(errorMessages.join(''), 'red'));
+
     })  
   } 
 }
@@ -51,7 +59,14 @@ export const createArea = ({name, description}, vault_id, callBack) => {
       callBack();
     })
     .catch( err => {
-      dispatch(setFlash('Failed to create area!', 'red'));
+
+      // loop over all the errors and add to the flash message
+      let errorMessages = ['Failed to create area! '];
+      for ( let key in err.response.data.errors ) {
+        errorMessages.push(key + ' ' + err.response.data.errors[key])
+      }
+
+      dispatch(setFlash(errorMessages.join(''), 'red'));
       callBack();
     })  
   } 

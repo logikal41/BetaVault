@@ -12,8 +12,11 @@ class Api::WallsController < ApplicationController
 
     def update
         wall = Wall.find(params[:id])
-        wall.update(wall_params)
-        render json: wall
+        if wall.update(wall_params)
+            render json: wall
+        else
+            render json: { errors: wall.errors }, status: :unprocessable_entity
+        end
     end
 
     def create
@@ -21,7 +24,7 @@ class Api::WallsController < ApplicationController
         if wall.save
             render json: wall
         else
-            render json: {errors: area.errors}, status: :unprocessable_entity
+            render json: {errors: wall.errors}, status: :unprocessable_entity
         end
     end
 
