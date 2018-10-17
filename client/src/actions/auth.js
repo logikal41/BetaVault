@@ -36,6 +36,9 @@ export const handleLogout = history => {
     axios.delete('/api/auth/sign_out')
       .then(res => {
         const { headers } = res;
+        // clear the redux store selection and list
+        dispatch({ type: 'SET_ACTIVE_SELECTION', payload: {} });
+        dispatch({ type: 'SET_ACTIVE_LIST', payload: [] });
         dispatch(logout());
         dispatch(setFlash('Logged out successfully!', 'green'));
         dispatch(setHeaders(headers));
