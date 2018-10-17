@@ -2,29 +2,8 @@ import axios from 'axios';
 import { setHeaders } from './headers';
 import { setFlash } from './flash';
 
-export const SELECT_ROUTE = 'SELECT_ROUTE';
-export const GET_ROUTES = 'GET_ROUTES';
 export const DELETE_ROUTE = 'DELETE_ROUTE';
 export const CLEAR_ROUTES = 'CLEAR_ROUTES';
-
-export const selectRoute = (id) => {
-    return dispatch => {
-      dispatch({ type: SELECT_ROUTE, payload: id });
-    }
-  }
-
-export const getRoutes = (wall_id) => {
-  return dispatch => {
-    axios.get(`/api/walls/${wall_id}`)
-      .then( res => {
-        dispatch({ type: GET_ROUTES, payload: res.data.routes });
-        dispatch(setHeaders(res.headers));
-      })
-      .catch( err => {
-        dispatch(setFlash('Failed to get routes', 'red'));
-      })
-    }
-}
 
 export const createRoute = (values, callBack) => {
   return dispatch => {

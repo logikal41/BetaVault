@@ -25,20 +25,6 @@ export const createWall = ( {id, name, description} , callBack ) => {
   } 
 }
 
-export const getWall = id => {
-  return dispatch => {
-    axios.get(`/api/walls/${id}`)
-    .then( res => {
-      dispatch({ type: 'SET_ACTIVE_LIST', payload: res.data.routes })
-      dispatch({ type: 'SET_ACTIVE_SELECTION', payload: res.data.wall })
-      dispatch(setHeaders(res.headers));
-    })
-    .catch( err => {
-      dispatch(setFlash('Failed to get wall information!', 'red'));
-    })
-  }
-}
-
 export const deleteWall = (id, callBack) => {
   return dispatch => {
   axios.delete(`/api/walls/${id}`)
