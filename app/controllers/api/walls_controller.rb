@@ -1,4 +1,5 @@
 class Api::WallsController < ApplicationController
+    before_action :authenticate_user! 
 
     def index
         render json: Wall.where(area_id: params[:area_id])

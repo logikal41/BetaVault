@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Api::VaultsController, type: :controller do
 
   # LOOK INTO USING FACTORY GIRL AND ALL THAT TO DO UNIT TESTING ON MODELS AND CONTROLLERS
+  # Look at bens app as an example
 
   # describe "GET #index" do
   #   it "returns http success" do

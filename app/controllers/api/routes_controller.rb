@@ -1,4 +1,5 @@
 class Api::RoutesController < ApplicationController
+    before_action :authenticate_user! 
  
     def index
       render json: Route.where(wall_id: params[:wall_id])

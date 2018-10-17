@@ -1,5 +1,5 @@
 class Api::VaultsController < ApplicationController
-  # before_action :authenticate_user! 
+  before_action :authenticate_user! 
 
   def index
     render json: Vault.all.order(id: :asc)
