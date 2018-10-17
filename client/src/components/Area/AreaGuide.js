@@ -26,7 +26,7 @@ class AreaGuide extends Component {
                 this.setState({ vault_name: res.data });
             })
             .catch( err => {
-                dispatch(setFlash('Failed to get the vault name', 'red'));
+                dispatch(setFlash('Failed to get the vault name!', 'red'));
             })
 
             dispatch(setHeaders(res.headers));

@@ -36,13 +36,12 @@ export const updateArea = ({id, name, description}, callBack) => {
   } 
 }
 
-export const createArea = ({name, description}, vault_id, callBack) => {
+export const createArea = ({name, description}, vault_id) => {
   return dispatch => {
   axios.post('/api/areas', { vault_id, name, description })
     .then( res => {
       dispatch({ type: 'ADJOIN_ACTIVE_LIST', payload: res.data  })
       dispatch(setHeaders(res.headers));
-      callBack();
     })
     .catch( err => {
 
@@ -53,7 +52,6 @@ export const createArea = ({name, description}, vault_id, callBack) => {
       }
 
       dispatch(setFlash(errorMessages.join(''), 'red'));
-      callBack();
     })  
   } 
 }

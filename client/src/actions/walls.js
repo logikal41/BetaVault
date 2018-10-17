@@ -3,13 +3,12 @@ import { setHeaders } from './headers';
 import { setFlash } from './flash';
 
 
-export const createWall = ( {id, name, description} , callBack ) => {
+export const createWall = ( {id, name, description} ) => {
   return dispatch => {
   axios.post('/api/walls', { area_id: id, name, description })
     .then( res => {
       dispatch({ type: 'ADJOIN_ACTIVE_LIST', payload: res.data  })
       dispatch(setHeaders(res.headers));
-      callBack();
     })
     .catch( err => {
 
@@ -20,7 +19,6 @@ export const createWall = ( {id, name, description} , callBack ) => {
       }
 
       dispatch(setFlash(errorMessages.join(''), 'red'));
-      callBack();
     })  
   } 
 }

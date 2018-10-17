@@ -31,7 +31,10 @@ class VaultList extends Component {
       return (
         <Container>
             <Segment basic>
-                <Button className='list-button-creation' fluid={true} onClick={() => history.push('/vault/new')}>New Vault</Button>
+                <Button className='list-button-creation' fluid={true} 
+                    onClick={() => history.push('/vault/new')}>
+                    New Vault
+                </Button>
             </Segment>
             <Container className='comments-container'>
             {/* List out all vaults in the database as cards */}

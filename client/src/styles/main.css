@@ -67,16 +67,6 @@
 
 }
 
-.navigation-buttons{
-
-    margin-top: 1em !important;
-    margin-bottom: 2em !important;
-    border-radius: 0em !important;
-    color:grey !important;
-    background: black !important;
-
-}
-
 .description-header{
 
     font-family: Roboto, 'Helvetica Neue', sans-serif !important;
@@ -105,12 +95,6 @@
     margin: calc(1rem - .14285714em) 0 1rem !important;
     font-family: Roboto, 'Helvetica Neue', sans-serif !important;
     font-size: .95em !important;
-
-}
-
-.background-container{
-
-    background-color: blue;
 
 }
 

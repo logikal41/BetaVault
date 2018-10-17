@@ -5,14 +5,16 @@ import { setFlash } from './flash';
 export const DELETE_ROUTE = 'DELETE_ROUTE';
 export const CLEAR_ROUTES = 'CLEAR_ROUTES';
 
-export const createRoute = (values, callBack) => {
+export const createRoute = (values) => {
   return dispatch => {
   axios.post('/api/routes', values )
     .then( res => {
+      // navigate to the new route page
+      dispatch({ type: 'SET_ACTIVE_SELECTION', payload: res.data })
+      // update the route list
       dispatch({ type: 'ADJOIN_ACTIVE_LIST', payload: res.data  })
       dispatch(setHeaders(res.headers));
     })
-    .then( () => callBack() )
     .catch( err => {
 
       // loop over all the errors and add to the flash message
@@ -22,7 +24,6 @@ export const createRoute = (values, callBack) => {
       }
 
       dispatch(setFlash(errorMessages.join(''), 'red'));
-      callBack();
     })  
   } 
 }

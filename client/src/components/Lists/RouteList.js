@@ -19,7 +19,7 @@ class RouteList extends Component {
         <Container className='comments-container'>
           <Image src={Map} size='medium' />
           <Button className='list-button-creation' fluid={true} onClick={() => toggleCreate()}>Add Route</Button>
-            <Segment basic> 
+            <Segment padded basic> 
               <Dimmer active inverted>
                 <Loader>loading routes...</Loader>
               </Dimmer>

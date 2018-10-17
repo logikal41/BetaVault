@@ -3,7 +3,6 @@ import { Field, reduxForm } from 'redux-form';
 import { Form, Header, Container, Button } from 'semantic-ui-react';
 import { createRoute } from '../../actions/routes';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 class NewRouteForm extends React.Component {
 
@@ -21,9 +20,9 @@ class NewRouteForm extends React.Component {
     }
 
     onSubmit = (values) => {
-        const { dispatch, history, toggleCreate } = this.props;
+        const { dispatch, toggleCreate } = this.props;
         const { id } = this.props.activeSelection;
-        dispatch(createRoute( { wall_id: id , ...values }, () => history.push(`/wall/${id}`) ));
+        dispatch(createRoute( { wall_id: id , ...values } ));
         toggleCreate();
     }
 
@@ -105,7 +104,7 @@ const mapStateToProps = ({ activeSelection }) => {
     return { activeSelection }
 };
 
-export default withRouter(reduxForm({
+export default reduxForm({
     validate,
     form: 'NewRouteForm'
-})(connect(mapStateToProps)(NewRouteForm)));
+})(connect(mapStateToProps)(NewRouteForm));

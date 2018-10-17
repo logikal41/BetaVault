@@ -3,8 +3,6 @@ import { Field, reduxForm } from 'redux-form';
 import { Form, Header, Container, Button } from 'semantic-ui-react';
 import { createArea } from '../../actions/areas';
 import { connect } from 'react-redux';
-//might not actually need to push the user anywhere if we are just toggling the create form
-import { withRouter } from 'react-router-dom';
 
 class NewAreaForm extends React.Component {
 
@@ -23,10 +21,8 @@ class NewAreaForm extends React.Component {
     }
 
     onSubmit = (values) => {
-        const { dispatch, history, vault_id, toggleCreate } = this.props;
-        // need to push the user anywhere with this action????
-        // toggle create may be enough
-        dispatch(createArea(values, vault_id, () => history.push(`/vault/${vault_id}`) ));
+        const { dispatch, vault_id, toggleCreate } = this.props;
+        dispatch(createArea(values, vault_id));
         toggleCreate();
     }
 
@@ -73,7 +69,7 @@ const validate = (values) => {
     return errors;
 }
 
-export default withRouter(reduxForm({
+export default reduxForm({
     validate,
     form: 'NewAreaForm'
-})(connect()(NewAreaForm)));
+})(connect()(NewAreaForm));

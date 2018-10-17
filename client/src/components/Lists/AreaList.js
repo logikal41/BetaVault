@@ -14,7 +14,7 @@ class AreaList extends Component {
         <Container className='comments-container'>
           <Image src={Map} size='medium' />
           <Button className='list-button-creation' fluid={true} onClick={() => toggleCreate()}>Add Area</Button>
-            <Segment basic> 
+            <Segment padded basic> 
               <Dimmer active inverted>
                 <Loader>loading areas...</Loader>
               </Dimmer>
