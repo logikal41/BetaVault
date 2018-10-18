@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature "Delete existing vault", js: true do
         before do
-            # Must first create a user
             @user = User.create(name: "user", email: "user@test.com", password: "password")
             @vault = Vault.create(name: "Test Vault", description: "description of the test vault")
             
