@@ -28,14 +28,14 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={UserRouter} />
             <AuthRoute exact path='/register' component={Register} />
-            <ProtectedRoute exact path='/vault/new' component={NewVaultForm} authLevel={["admin", "user"]} />
-            <ProtectedRoute exact path='/vault/update/:id' component={UpdateVaultForm} authLevel={["admin", "user"]} />
-            <ProtectedRoute exact path='/vault/:id' component={VaultGuide} authLevel={["admin", "user"]} />
-            <ProtectedRoute exact path='/area/update/:id' component={UpdateAreaForm} authLevel={["admin", "user"]} />
-            <ProtectedRoute exact path='/area/:id' component={AreaGuide} authLevel={["admin", "user"]} />
-            <ProtectedRoute exact path='/wall/update/:id' component={UpdateWallForm} authLevel={["admin", "user"]} />
-            <ProtectedRoute exact path='/wall/:id' component={WallGuide} authLevel={["admin", "user"]} />
-            <ProtectedRoute exact path='/route/update/:id' component={UpdateRouteForm} authLevel={["admin", "user"]} />
+            <ProtectedRoute exact path='/vault/new' component={NewVaultForm} authLevel={["admin"]} />
+            <ProtectedRoute exact path='/vault/update/:id' component={UpdateVaultForm} authLevel={["admin"]} />
+            <ProtectedRoute exact path='/vault/:id' component={VaultGuide} authLevel={["admin"]} />
+            <ProtectedRoute exact path='/area/update/:id' component={UpdateAreaForm} authLevel={["admin"]} />
+            <ProtectedRoute exact path='/area/:id' component={AreaGuide} authLevel={["admin"]} />
+            <ProtectedRoute exact path='/wall/update/:id' component={UpdateWallForm} authLevel={["admin"]} />
+            <ProtectedRoute exact path='/wall/:id' component={WallGuide} authLevel={["admin"]} />
+            <ProtectedRoute exact path='/route/update/:id' component={UpdateRouteForm} authLevel={["admin"]} />
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>
