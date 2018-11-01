@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+# this spec test fails because the user is not logged in when trying to view the vault information
+
 describe 'Vaults', js: true, type: :request do
 
     before do
