@@ -28,14 +28,14 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={UserRouter} />
             <AuthRoute exact path='/register' component={Register} />
-            <ProtectedRoute exact path='/vault/new' component={NewVaultForm} />
-            <ProtectedRoute exact path='/vault/update/:id' component={UpdateVaultForm} />
-            <ProtectedRoute exact path='/vault/:id' component={VaultGuide} />
-            <ProtectedRoute exact path='/area/update/:id' component={UpdateAreaForm} />
-            <ProtectedRoute exact path='/area/:id' component={AreaGuide} />
-            <ProtectedRoute exact path='/wall/update/:id' component={UpdateWallForm} />
-            <ProtectedRoute exact path='/wall/:id' component={WallGuide} />
-            <ProtectedRoute exact path='/route/update/:id' component={UpdateRouteForm} />
+            <ProtectedRoute exact path='/vault/new' component={NewVaultForm} authLevel={["admin", "user"]} />
+            <ProtectedRoute exact path='/vault/update/:id' component={UpdateVaultForm} authLevel={["admin", "user"]} />
+            <ProtectedRoute exact path='/vault/:id' component={VaultGuide} authLevel={["admin", "user"]} />
+            <ProtectedRoute exact path='/area/update/:id' component={UpdateAreaForm} authLevel={["admin", "user"]} />
+            <ProtectedRoute exact path='/area/:id' component={AreaGuide} authLevel={["admin", "user"]} />
+            <ProtectedRoute exact path='/wall/update/:id' component={UpdateWallForm} authLevel={["admin", "user"]} />
+            <ProtectedRoute exact path='/wall/:id' component={WallGuide} authLevel={["admin", "user"]} />
+            <ProtectedRoute exact path='/route/update/:id' component={UpdateRouteForm} authLevel={["admin", "user"]} />
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>

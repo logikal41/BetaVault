@@ -1,7 +1,8 @@
 # Users
 # admin 
 # User.create(confirmed_at: Time.now, name: "Admin", email: "admin@test.com", password: "password", role: "admin")
-User.create(name: "Admin", email: "admin@test.com", password: "password");
+User.create(name: "Admin", email: "admin@test.com", password: "password", role: "admin");
+User.create(name: "User", email: "user@test.com", password: "password", role: "user");
 # user
 # User.create(confirmed_at: Time.now, name: "User", email: "user@test.com", password: "password", role: "user")
 
