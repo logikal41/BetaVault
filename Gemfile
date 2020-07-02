@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.6'
+gem 'rails', '~> 6.0', '>= 6.0.3.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -18,6 +18,9 @@ gem 'puma', '~> 3.7'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+#Rails 6 javascript compiler (optional)
+#gem "webpacker" 
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -31,14 +34,14 @@ gem 'puma', '~> 3.7'
 # this is for authenticating with facebook, google, etc.
 gem 'omniauth' 
 
-gem 'devise', '~> 4.4.3'
-gem 'devise_token_auth', '~> 0.1.43'
+gem 'devise'
+gem 'devise_token_auth'
 
 group :development, :test do
   gem 'pry'
   # gem 'letter_opener'
   gem 'rspec-rails', '~> 3.7'
-  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'shoulda-matchers', '~> 4.0'
 end
 
 group :test do
@@ -47,7 +50,7 @@ group :test do
   # this is used to ensure a clean state during tests
   gem 'database_cleaner'
   # this provides the methods used for feature testing
-  gem 'capybara', '~> 3.3'
+  gem 'capybara', '>= 3.3'
 end
 
 group :development do
@@ -58,6 +61,7 @@ group :development do
   gem 'guard', '~>2.14.0'
   gem 'guard-rspec', '~>4.7.2'
   gem 'guard-cucumber', '~>2.1.2' # get rid of this if you dont use it
+  gem 'rails-erd' #database diagram generator
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
