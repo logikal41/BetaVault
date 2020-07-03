@@ -1,9 +1,10 @@
 {
   "name": "client",
-  "version": "0.1.0",
+  "version": "1.7.0",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "js-yaml": "^3.13.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
