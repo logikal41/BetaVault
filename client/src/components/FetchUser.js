@@ -11,7 +11,7 @@ class FetchUser extends Component {
     else dispatch(validateToken(this.loaded));
   }
 
-  componentWillReceiveProps() {
+  UNSAFE_componentWillReceiveProps() {
     if (!this.state.loaded) this.loaded();
   }
 

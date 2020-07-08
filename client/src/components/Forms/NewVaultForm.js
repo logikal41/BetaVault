@@ -21,8 +21,8 @@ class NewVaultForm extends React.Component {
     }
 
     onSubmit = (values) => {
-        const { dispatch, history } = this.props;
-        dispatch(createVault(values, () => history.push('/') ));
+        const { dispatch, history, user_id } = this.props;
+        dispatch(createVault(values, user_id, () => history.push('/') ));
     }
 
     render() {
@@ -68,7 +68,11 @@ const validate = (values) => {
     return errors;
 }
 
+const mapStateToProps = ( { user } ) => {
+    return { user_id: user.id }
+}
+
 export default reduxForm({
     validate,
     form: 'NewVaultForm'
-})(connect()(NewVaultForm));
+})(connect(mapStateToProps)(NewVaultForm));

@@ -21,8 +21,8 @@ class NewAreaForm extends React.Component {
     }
 
     onSubmit = (values) => {
-        const { dispatch, vault_id, toggleCreate } = this.props;
-        dispatch(createArea(values, vault_id));
+        const { dispatch, vault_id, toggleCreate, user_id } = this.props;
+        dispatch(createArea(values, user_id, vault_id));
         toggleCreate();
     }
 
@@ -69,7 +69,11 @@ const validate = (values) => {
     return errors;
 }
 
+const mapStateToProps = ({ user }) => {
+    return { user_id: user.id }
+}
+
 export default reduxForm({
     validate,
     form: 'NewAreaForm'
-})(connect()(NewAreaForm));
+})(connect(mapStateToProps)(NewAreaForm));

@@ -3,9 +3,9 @@ import { setHeaders } from './headers';
 import { setFlash } from './flash';
 
 
-export const createWall = ( {id, name, description} ) => {
+export const createWall = ( {id, user_id, name, description} ) => {
   return dispatch => {
-  axios.post('/api/walls', { area_id: id, name, description })
+  axios.post('/api/walls', { area_id: id, user_id, name, description })
     .then( res => {
       dispatch({ type: 'ADJOIN_ACTIVE_LIST', payload: res.data  })
       dispatch(setHeaders(res.headers));

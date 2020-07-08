@@ -35,7 +35,7 @@ class Api::WallsController < ApplicationController
 
     private
         def wall_params
-            params.require(:wall).permit(:area_id, :name, :description)
+            params.require(:wall).permit(:area_id, :name, :description, :user_id)
         end
   
 end

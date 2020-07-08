@@ -39,6 +39,6 @@ class Api::VaultsController < ApplicationController
 
   private
     def vault_params
-      params.require(:vault).permit(:name, :description)
+      params.require(:vault).permit(:name, :description, :user_id)
     end
 end

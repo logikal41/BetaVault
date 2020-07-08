@@ -20,9 +20,9 @@ class NewRouteForm extends React.Component {
     }
 
     onSubmit = (values) => {
-        const { dispatch, toggleCreate } = this.props;
+        const { dispatch, toggleCreate, user_id } = this.props;
         const { id } = this.props.activeSelection;
-        dispatch(createRoute( { wall_id: id , ...values } ));
+        dispatch(createRoute( { wall_id: id , user_id, ...values } ));
         toggleCreate();
     }
 
@@ -100,8 +100,8 @@ const validate = (values) => {
     return errors;
 }
 
-const mapStateToProps = ({ activeSelection }) => {
-    return { activeSelection }
+const mapStateToProps = ({ activeSelection, user }) => {
+    return { activeSelection, user_id: user.id }
 };
 
 export default reduxForm({

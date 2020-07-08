@@ -25,10 +25,10 @@ export const updateVault = (vault, callBack) => {
   } 
 }
 
-export const createVault = (values, callBack) => {
+export const createVault = (values, user_id, callBack) => {
 
   return dispatch => {
-  axios.post('/api/vaults', values )
+  axios.post('/api/vaults', {user_id, ...values} )
     .then( res => {
       dispatch(setHeaders(res.headers));
       dispatch(setFlash('Vault has been created.', 'green'))

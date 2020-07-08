@@ -40,7 +40,7 @@ class Api::AreasController < ApplicationController
 
   private
     def area_params
-      params.require(:area).permit(:vault_id, :name, :description)
+      params.require(:area).permit(:vault_id, :name, :description, :user_id)
     end
 
 end
