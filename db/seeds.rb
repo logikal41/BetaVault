@@ -3,13 +3,6 @@ User.create(name: "Admin", email: "admin@test.com", password: "password", role: 
 User.create(name: "User1", email: "user1@test.com", password: "password", role: "user");
 User.create(name: "User2", email: "user2@test.com", password: "password", role: "user");
 
-# Privileges (permission 1 = admin, permission 2 = view only)
-Privilege.create(user_id: 2, vault_id: 1, permission: 1);
-Privilege.create(user_id: 3, vault_id: 1, permission: 2);
-Privilege.create(user_id: 3, vault_id: 2, permission: 1);
-Privilege.create(user_id: 2, vault_id: 2, permission: 2);
-Privilege.create(user_id: 3, vault_id: 3, permission: 2);
-
 # Create Group
 Vault.create(name: 'San Rafael Swell - North', description: 'All the information on the northern San Rafael Swell.', user_id: 2);
 Vault.create(name: 'User2 admin only', description: 'user 2 should have admin privileges and user 1 should be view only', user_id: 2);
@@ -101,6 +94,13 @@ Route.create(wall_id: 4, name: 'Ladies of the 80s', difficulty: 'A2+ / C1', pitc
     description: 'Ladies of the 80s climbs a uniform 0.25-inch splitter crack right of a fallen pillar (right of BBQ Bomber) to a three-piton rappel station...',
     gear: 'For clean aid (to avoid excessive nailing, especially on the first 30 feet) bring (5-10) large Lowe Balls; (10) #0 TCUs, a few Blue Aliens, (1) medium Leeper Z-ton; quickdraws',
     descent: 'One double-rope rappel down the route', user_id: 2);
+
+# Privileges (permission 1 = admin, permission 2 = view only)
+Privilege.create(user_id: 2, vault_id: 1, permission: 1);
+Privilege.create(user_id: 3, vault_id: 1, permission: 2);
+Privilege.create(user_id: 3, vault_id: 2, permission: 1);
+Privilege.create(user_id: 2, vault_id: 2, permission: 2);
+Privilege.create(user_id: 3, vault_id: 3, permission: 2);
 
 
 
