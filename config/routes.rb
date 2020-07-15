@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :areas
     resources :walls
     resources :routes
+    resources :privileges
+    
     get 'areainfo/:id', to:'areas#areainfo'
     get 'vaultname/:id', to:'vaults#vaultname'
   end

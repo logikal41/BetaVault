@@ -1,13 +1,19 @@
 # Users
-# admin 
-# User.create(confirmed_at: Time.now, name: "Admin", email: "admin@test.com", password: "password", role: "admin")
 User.create(name: "Admin", email: "admin@test.com", password: "password", role: "admin");
-User.create(name: "User", email: "user@test.com", password: "password", role: "user");
-# user
-# User.create(confirmed_at: Time.now, name: "User", email: "user@test.com", password: "password", role: "user")
+User.create(name: "User1", email: "user1@test.com", password: "password", role: "user");
+User.create(name: "User2", email: "user2@test.com", password: "password", role: "user");
+
+# Privileges (permission 1 = admin, permission 2 = view only)
+Privilege.create(user_id: 2, vault_id: 1, permission: 1);
+Privilege.create(user_id: 3, vault_id: 1, permission: 2);
+Privilege.create(user_id: 3, vault_id: 2, permission: 1);
+Privilege.create(user_id: 2, vault_id: 2, permission: 2);
+Privilege.create(user_id: 3, vault_id: 3, permission: 2);
 
 # Create Group
 Vault.create(name: 'San Rafael Swell - North', description: 'All the information on the northern San Rafael Swell.', user_id: 2);
+Vault.create(name: 'User2 admin only', description: 'user 2 should have admin privileges and user 1 should be view only', user_id: 2);
+Vault.create(name: 'User2 access only', description: 'user 2 should have access and user 1 not allowed', user_id: 1);
 
 # Areas in the North Swell
 Area.create(vault_id: 1, name: 'Buckhorn Wash', description: 'Buckhorn Wash descends north to south from younger to older strata of sedimentary rock. It begins with Carmel Sandstone (the equivalent of the Dewey Bridge...', user_id: 1);

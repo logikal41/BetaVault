@@ -11,23 +11,55 @@ import { setFlash } from '../../actions/flash';
 
 
 class VaultGuide extends Component {
-    state = { create: false };
+    state = { create: false, edit: false };
 
-    // Get all the areas within this vault
+    // Get all the areas within this vault and check user authorization
     componentDidMount() {
-        const { dispatch, match, history } = this.props;
+        const { dispatch, match, history, user } = this.props;
+        
+        // check if site admin
+        if( user.role === 'god' || user.role === 'admin'){
+            // set user permissions (edit privileges)
+            this.setState({edit: !this.state.edit})
+            // pull information from database
+            axios.get(`/api/vaults/${match.params.id}`)
+            .then( res => {
+                dispatch({ type: 'SET_ACTIVE_SELECTION', payload: res.data.vault })
+                dispatch({ type: 'SET_ACTIVE_LIST', payload: res.data.areas })
+                dispatch(setHeaders(res.headers));
+            })
+            .catch( err => {
+                dispatch(setFlash('Failed to get vault information', 'red'));
+                // push the user back to the vault list
+                history.push('/');
+            })
+        } else {
 
-        axios.get(`/api/vaults/${match.params.id}`)
-        .then( res => {
-            dispatch({ type: 'SET_ACTIVE_SELECTION', payload: res.data.vault })
-            dispatch({ type: 'SET_ACTIVE_LIST', payload: res.data.areas })
-            dispatch(setHeaders(res.headers));
-        })
-        .catch( err => {
-            dispatch(setFlash('Failed to get vault information', 'red'));
-            // push the user back to the vault list
-            history.push('/');
-        })
+            axios.get(`/api/privileges/${match.params.id}`)
+            .then( res => {
+    
+                if(res.data) {
+                    axios.get(`/api/vaults/${match.params.id}`)
+                    .then( res => {
+                        dispatch({ type: 'SET_ACTIVE_SELECTION', payload: res.data.vault })
+                        dispatch({ type: 'SET_ACTIVE_LIST', payload: res.data.areas })
+                        dispatch(setHeaders(res.headers));
+                    })
+                    .catch( err => {
+                        dispatch(setFlash('Failed to get vault information', 'red'));
+                        // push the user back to the vault list
+                        history.push('/');
+                    })
+                } else {
+                    dispatch(setFlash('You do not have access to this vault.', 'red'));
+                    history.push('/');
+                }
+            })
+            .catch ( err => {
+                dispatch(setFlash('Failed to check user privliges', 'red'));
+            })
+            
+        }
     }
 
     toggleCreate = () => {
@@ -76,8 +108,8 @@ class VaultGuide extends Component {
     }
 }
 
-const mapStateToProps = ({ activeSelection }) => {
-    return {activeSelection}
+const mapStateToProps = ({ activeSelection, user }) => {
+    return {activeSelection, user}
 }
 
 export default connect(mapStateToProps)(VaultGuide);

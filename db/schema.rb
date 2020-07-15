@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_04_011923) do
+ActiveRecord::Schema.define(version: 2020_07_08_055216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 2020_07_04_011923) do
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_areas_on_user_id"
     t.index ["vault_id"], name: "index_areas_on_vault_id"
+  end
+
+  create_table "privileges", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "vault_id", null: false
+    t.integer "permission"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_privileges_on_user_id"
+    t.index ["vault_id"], name: "index_privileges_on_vault_id"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -97,6 +107,8 @@ ActiveRecord::Schema.define(version: 2020_07_04_011923) do
 
   add_foreign_key "areas", "users"
   add_foreign_key "areas", "vaults"
+  add_foreign_key "privileges", "users"
+  add_foreign_key "privileges", "vaults"
   add_foreign_key "routes", "users"
   add_foreign_key "routes", "walls"
   add_foreign_key "vaults", "users"
